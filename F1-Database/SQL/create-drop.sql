@@ -134,13 +134,6 @@ CREATE SEQUENCE IF NOT EXISTS SEQ_CONSTRUCTOR_ID
 START 215 
 NO CYCLE 
 OWNED BY CONSTRUCTORS.constructorid;
-   
-   -- Criando a sequence dos ids dos pilotos
-CREATE SEQUENCE IF NOT EXISTS SEQ_DRIVER_ID
-START 859
-NO CYCLE 
-OWNED BY DRIVER.driverid;
-
 
    
 DROP TABLE IF EXISTS DriverStandings CASCADE;
@@ -169,6 +162,13 @@ CREATE TABLE Driver(
     URL TEXT UNIQUE,
 	CONSTRAINT DrLogKey UNIQUE (Forename, Surname)
     );
+
+
+-- Criando a sequence dos ids dos pilotos
+CREATE SEQUENCE IF NOT EXISTS SEQ_DRIVER_ID
+START 859
+NO CYCLE 
+OWNED BY DRIVER.driverid;
 
 
    
