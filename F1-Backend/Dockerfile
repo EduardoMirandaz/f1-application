@@ -1,9 +1,24 @@
-# Imagem base do Java 17.0.7
+# Estágio de build
+FROM maven:3.8.4-openjdk-17-slim AS build
+WORKDIR /app
+
+# Copie o arquivo pom.xml para o contêiner
+COPY pom.xml .
+
+# Baixe as dependências do Maven
+RUN mvn dependency:go-offline
+
+# Copie todo o código-fonte para o contêiner
+COPY src ./src
+
+# Compile o projeto
+RUN mvn package -DskipTests
+
+# Estágio final
 FROM openjdk:17
 
-# Copie o arquivo JAR e o arquivo application.properties para dentro do contêiner
-COPY target/F1-Backend-0.0.1-SNAPSHOT.jar /app/f1-backend.jar
-COPY src/main/resources/application.properties /app/application.properties
+# Copie o arquivo JAR gerado no estágio de build para dentro do contêiner
+COPY --from=build /app/target/F1-Backend-0.0.1-SNAPSHOT.jar /app/f1-backend.jar
 
 # Defina o diretório de trabalho como /app
 WORKDIR /app
@@ -12,4 +27,5 @@ WORKDIR /app
 EXPOSE 8080
 
 # Comando para executar a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "/app/f1-backend.jar", "--spring.config.location=file:/app/application.properties"]
+CMD ["java", "-jar", "/app/f1-backend.jar"]
+
