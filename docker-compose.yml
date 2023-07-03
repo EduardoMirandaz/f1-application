@@ -1,0 +1,48 @@
+version: '3'
+
+services:
+  frontend:
+    container_name: f1-frontend
+    build:
+      context: ./F1-Frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    restart: on-failure
+    networks:
+      - postgres-compose-network
+
+  backend:
+    container_name: f1-backend
+    build:
+      context: ./F1-Backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: on-failure
+    networks:
+      - postgres-compose-network
+
+  postgres:
+    container_name: f1-database
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "teste123"
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./F1-Database/SQL/create-drop.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./F1-Database/csv/:/csv
+    networks:
+      - postgres-compose-network
+
+volumes:
+  postgres-data:
+    external: false
+
+networks:
+  postgres-compose-network:
+
