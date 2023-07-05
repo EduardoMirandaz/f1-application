@@ -3,7 +3,9 @@ package SCC0541.F1Backend.controllers;
 import SCC0541.F1Backend.dtos.ConstructorDTO;
 import SCC0541.F1Backend.dtos.CreateDriverDTO;
 import SCC0541.F1Backend.dtos.DriverDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoPilotoDTO;
 import SCC0541.F1Backend.services.DriverService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -35,8 +37,13 @@ public class DriverController {
     }
 
     @GetMapping("/relatorios/recuperar-vitorias")
-    public void getDriversVictories() {
-
+    public ResultadoPilotoDTO getDriversVictories(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        if (token != null && token.startsWith("Bearer ")) {
+            String authToken = token.substring(7); // Remover o prefixo "Bearer "
+            return driverService.getDriversVictories(authToken);
+        }
+        return null;
     }
 
 

@@ -101,4 +101,6 @@ public class SQLScripts {
             """;
 
     public static final String FIND_CITY_BY_NAME = "SELECT * FROM GEOCITIES15K WHERE geocities15k.name=:nomeCidade";
+    public static final String GET_PILOT_VICTORIES = "SELECT * FROM get_pilot_victories(:idPiloto)";
+
 }
