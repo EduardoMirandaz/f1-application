@@ -27,5 +27,5 @@ WORKDIR /app
 EXPOSE 8080
 
 # Comando para executar a aplicação quando o contêiner for iniciado
-CMD ["java", "-jar", "/app/f1-backend.jar"]
+CMD ["java", "-jar", "/app/f1-backend.jar", "--spring.profiles.active=prd"]
 
