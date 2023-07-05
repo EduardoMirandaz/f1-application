@@ -42,6 +42,7 @@ public class SecurityConfiguration{
                         .requestMatchers("/airports/relatorios/exibir-aeroportos-proximos").hasAuthority("Administrador")
                         .requestMatchers("/drivers/create").hasAuthority("Administrador")
                         .requestMatchers("/constructors/create").hasAuthority("Administrador")
+                        .requestMatchers("/status/relatorios/quantidade-por-resultado").hasAnyAuthority("Administrador", "Escuderia", "Piloto")
                         .requestMatchers("/usuario/login").permitAll()
                         .requestMatchers(caminhosIgnorados).permitAll()
                         .anyRequest().authenticated()
