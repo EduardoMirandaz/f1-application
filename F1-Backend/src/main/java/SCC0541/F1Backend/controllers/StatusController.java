@@ -3,6 +3,7 @@ package SCC0541.F1Backend.controllers;
 import SCC0541.F1Backend.dtos.RelatoriosDTOs.QuantidadeStatusDTO;
 import SCC0541.F1Backend.dtos.StatusDTO;
 import SCC0541.F1Backend.services.StatusService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +15,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping("/status") // localhost:8080/circuits
+@RequestMapping("/status") // localhost:8080/status
 public class StatusController {
 
     @Autowired
@@ -26,8 +27,13 @@ public class StatusController {
     }
 
     @GetMapping("/relatorios/quantidade-por-resultado")
-    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(@RequestHeader("Authorization") String token){
-        return statusService.recuperarRelatorioQuantidadeStatus(token.substring(7));
+    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        if (token != null && token.startsWith("Bearer ")) {
+            String authToken = token.substring(7); // Remover o prefixo "Bearer "
+            return statusService.recuperarRelatorioQuantidadeStatus(authToken);
+        }
+        return null;
     }
 
 

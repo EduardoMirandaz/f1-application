@@ -14,6 +14,7 @@ COPY src ./src
 # Compile o projeto
 RUN mvn package -DskipTests
 
+
 # Estágio final
 FROM openjdk:17
 
