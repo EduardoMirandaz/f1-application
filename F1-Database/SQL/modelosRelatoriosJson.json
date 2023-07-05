@@ -176,7 +176,18 @@ cidades =
 
 /* Relatorio 5 */
 resultadoPiloto: {
-                    totalVitorias: 2,
+		    geral:[
+                        {
+                            nomePremio: 'grampix',
+                            ano: 2022
+                        },
+                        {  
+                            nomePremio: 'grampix',
+                            ano: 2023
+                        }
+                        
+                    ],
+                    
                     porAno:[
                         {
                             ano: 2022,
