@@ -1,9 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import ElementManager from '../views/ElementManager.vue'
-import AddElement from '../views/AddElement.vue'
-import EditElement from '../views/EditElement.vue'
-import ViewElement from '../views/ViewElement.vue'
 import PageNotFound from '../views/PageNotFound.vue'
 import LoginPage from '../views/LoginPage.vue'
 import AboutView from '../views/AboutView.vue'
@@ -14,26 +10,6 @@ const routes = [
     path: '/',
     name: 'home',
     component: HomeView
-  },
-  {
-    path: '/elements',
-    name: 'ElementManager',
-    component: ElementManager
-  },
-  {
-    path: '/elements/add',
-    name: 'AddElement',
-    component: AddElement
-  },
-  {
-    path: '/elements/edit/:elementId',
-    name: 'EditElement',
-    component: EditElement
-  },
-  {
-    path: '/elements/view/:elementId',
-    name: 'ViewElement',
-    component: ViewElement
   },
   {
     path: '/:pathMatch(.*)*',

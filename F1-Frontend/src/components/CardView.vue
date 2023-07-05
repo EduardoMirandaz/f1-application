@@ -1,5 +1,5 @@
 <template>
-    <div class="container-card card my-2 list-group-item-success shadow-lg">
+    <div class="card-view container-card card my-2 list-group-item-success shadow-lg ">
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="col-sm-4">
@@ -22,12 +22,12 @@
                     </ul>
                 </div>
                 <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
-                    <router-link v-if="viewRole" :to="`/elements/view/${element.id}`" class="btn btn-warning my-1">
-                        <i class="fa fa-eye"></i>
-                    </router-link>
-                    <router-link v-if="updateRole" :to="`/elements/edit/${element.id}`" class="btn btn-primary my-1">
-                        <i class="fa fa-pen"></i>
-                    </router-link>
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye" v-if="viewRole">
+                        <ViewElement :element-id="element.id"/>
+                    </ModalElement> 
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen" v-if="updateRole">
+                        <EditElement :element-id="element.id"/>
+                    </ModalElement>
                     <button v-if="deleteRole" class="btn btn-danger my-1" @click="clickDeleteElement(element.id)">
                         <i class="fa fa-trash"></i>
                     </button>
@@ -39,7 +39,12 @@
   
 <script>
 import { ElementService } from '../services/ElementService.js'
+import ViewElement from './ViewElement.vue'
+import EditElement from './EditElement.vue'
+import ModalElement from '../components/ModalElement.vue'
 export default {
+    name: 'CardView',
+    components: { ModalElement, ViewElement, EditElement },
     props: {
         element: {
             type: Object,

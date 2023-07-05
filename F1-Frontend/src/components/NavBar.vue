@@ -1,5 +1,5 @@
 <template>
-    <nav class="fixed-top navbar  navbar-expand-lg navbar-dark navGrad">
+    <nav class="fixed-top navbar navbar-expand-lg navbar-dark navGrad">
         <div class="container">
             <div class="iten">
                 <div class="my-2 my-lg-0" v-if="isDashPage">
