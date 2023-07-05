@@ -118,7 +118,7 @@ public class TokenService {
         return null;
     }
 
-    private Claims recoverBodyFromToken(String token) {
+    public Claims recoverBodyFromToken(String token) {
         return Jwts.parser()
                 .setSigningKey(secret)
                 .parseClaimsJws(token)

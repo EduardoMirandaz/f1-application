@@ -59,16 +59,35 @@ public class StatusRepository{
     }
 
 
-    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(){
+    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(String role, Integer idOriginal){
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         try{
             entityManager.getTransaction().begin();
 
-            Query query = entityManager.createNativeQuery(
-                    SQLScripts.GET_RESULTS_COUNT_BY_STATUS
-            );
+            Query query = null;
+
+            if(role.equals("Administrador")){
+                query = entityManager.createNativeQuery(
+                        SQLScripts.GET_RESULTS_COUNT_BY_STATUS
+                );
+            }
+            else if (role.equals("Piloto")) {
+                query = entityManager.createNativeQuery(
+                        SQLScripts.GET_RESULTS_COUNT_BY_STATUS_FOR_DRIVER
+                );
+
+                query.setParameter("driverId", idOriginal );
+            }
+            else if (role.equals("Escuderia")) {
+                query = entityManager.createNativeQuery(
+                        SQLScripts.GET_RESULTS_COUNT_BY_STATUS_FOR_CONSTRUCTOR
+                );
+
+                query.setParameter("constructorId", idOriginal );
+
+            }
 
             List<Object[]> tuplas = query.getResultList();
 

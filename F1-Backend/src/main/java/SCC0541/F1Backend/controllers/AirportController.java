@@ -1,8 +1,7 @@
 package SCC0541.F1Backend.controllers;
 
 import SCC0541.F1Backend.dtos.AirportDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsResponseDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsResponseDTO;
 import SCC0541.F1Backend.services.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;

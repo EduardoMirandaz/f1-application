@@ -1,12 +1,8 @@
 package SCC0541.F1Backend.services;
 
 import SCC0541.F1Backend.dtos.AirportDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsResponseDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.FoundCitiesByName;
-import SCC0541.F1Backend.dtos.UsuarioRespostaDTO;
-import SCC0541.F1Backend.models.AirportModel;
-import SCC0541.F1Backend.models.GeoCitiesModel;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsResponseDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.FoundCitiesByName;
 import SCC0541.F1Backend.repositories.AirportRepository;
 import SCC0541.F1Backend.repositories.GeoCitiesRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
