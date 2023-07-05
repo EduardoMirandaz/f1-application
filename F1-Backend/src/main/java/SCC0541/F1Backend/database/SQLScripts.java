@@ -53,6 +53,26 @@ public class SQLScripts {
             GROUP BY STATUS.STATUS
             ORDER BY  QUANTIDADE_DE_RESULTADOS DESC;""";
 
+    public static final String GET_RESULTS_COUNT_BY_STATUS_FOR_DRIVER = """
+            SELECT STATUS.STATUS,
+                   COUNT(*) AS QUANTIDADE_DE_RESULTADOS
+            FROM RESULTS
+                     JOIN STATUS ON RESULTS.STATUSID = STATUS.STATUSID
+            WHERE RESULTS.DRIVERID = :driverId
+            GROUP BY STATUS.STATUS
+            ORDER BY  QUANTIDADE_DE_RESULTADOS DESC;
+            """;
+
+    public static final String GET_RESULTS_COUNT_BY_STATUS_FOR_CONSTRUCTOR = """
+            SELECT STATUS.STATUS,
+                   COUNT(*) AS QUANTIDADE_DE_RESULTADOS
+            FROM RESULTS
+                     JOIN STATUS ON RESULTS.STATUSID = STATUS.STATUSID
+            WHERE RESULTS.CONSTRUCTORID = :constructorId
+            GROUP BY STATUS.STATUS
+            ORDER BY  QUANTIDADE_DE_RESULTADOS DESC;
+            """;
+
     public static final String GET_CLOSE_AIRPORTS = """
             SELECT DISTINCT
                 geocities15k.name AS nome_cidade,

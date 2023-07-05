@@ -1,11 +1,10 @@
 package SCC0541.F1Backend.repositories;
 
 import SCC0541.F1Backend.database.SQLScripts;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsResponseDTO;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.FoundCitiesByName;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsResponseDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.FoundCitiesByName;
 import SCC0541.F1Backend.models.AirportModel;
-import SCC0541.F1Backend.models.ConstructorModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
@@ -13,7 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class AirportRepository{

@@ -1,4 +1,4 @@
-package SCC0541.F1Backend.dtos.RelatoriosDTOs;
+package SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2;
 
 import jakarta.persistence.Access;
 import lombok.*;

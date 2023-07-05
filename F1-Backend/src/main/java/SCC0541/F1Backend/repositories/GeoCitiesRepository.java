@@ -1,7 +1,6 @@
 package SCC0541.F1Backend.repositories;
 
 import SCC0541.F1Backend.database.SQLScripts;
-import SCC0541.F1Backend.dtos.RelatoriosDTOs.CloseAirportsDTO;
 import SCC0541.F1Backend.models.GeoCitiesModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class GeoCitiesRepository{
