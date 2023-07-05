@@ -25,7 +25,7 @@ public class StatusController {
         return statusService.getAllStatus();
     }
 
-    @GetMapping("/relatorio/quantidade-por-resultado")
+    @GetMapping("/relatorios/quantidade-por-resultado")
     public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(@RequestHeader("Authorization") String token){
         return statusService.recuperarRelatorioQuantidadeStatus(token.substring(7));
     }

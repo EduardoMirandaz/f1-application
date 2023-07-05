@@ -164,6 +164,38 @@ CREATE TABLE Driver(
     );
 
 
+CREATE OR REPLACE FUNCTION get_pilot_victories(pilot_id INT) RETURNS TABLE (
+    ano_corrida INTEGER,
+    nome_corrida TEXT,
+    vitorias INTEGER
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        subquery.race_year::integer AS race_year,
+        subquery.race_name AS race_name,
+        subquery.victories::integer
+    FROM (
+        SELECT
+            EXTRACT(YEAR FROM races.date)::integer AS race_year,
+            races.name AS race_name,
+            COUNT(*) AS victories
+        FROM
+            results
+        JOIN
+            races ON results.raceid = races.raceid
+        WHERE
+            results.driverid = 102
+            AND results.positionorder = 1
+        GROUP BY
+            ROLLUP (race_year, race_name)
+    ) AS subquery;
+
+    RETURN;
+END;
+$$ LANGUAGE plpgsql;
+
+
 -- Criando a sequence dos ids dos pilotos
 CREATE SEQUENCE IF NOT EXISTS SEQ_DRIVER_ID
 START 859
