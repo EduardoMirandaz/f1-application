@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import SpinnerLoader from '../components/SpinnerLoader.vue'
+import SpinnerLoader from './SpinnerLoader.vue'
 import { ElementService } from '../services/ElementService.js'
 export default {
     name: 'ViewElement',

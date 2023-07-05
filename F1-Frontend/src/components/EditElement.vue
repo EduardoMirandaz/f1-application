@@ -70,7 +70,7 @@
 
 <script>
 import { ElementService } from '../services/ElementService.js'
-import SpinnerLoader from '../components/SpinnerLoader.vue'
+import SpinnerLoader from './SpinnerLoader.vue'
 export default {
     name: 'EditElement',
     components: { SpinnerLoader },
