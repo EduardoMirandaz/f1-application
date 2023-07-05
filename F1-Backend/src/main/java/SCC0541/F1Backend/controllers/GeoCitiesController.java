@@ -21,9 +21,5 @@ public class GeoCitiesController {
     @Autowired
     private GeoCitiesService geoCitiesService;
 
-    @GetMapping
-    public List<GeoCitiesDTO> getAllGeoCities(){
-        return geoCitiesService.getAllGeoCities();
-    }
 
 }

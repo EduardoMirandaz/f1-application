@@ -1,5 +1,6 @@
 package SCC0541.F1Backend.services;
 
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.QuantidadeStatusDTO;
 import SCC0541.F1Backend.dtos.StatusDTO;
 import SCC0541.F1Backend.repositories.StatusRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,11 +16,15 @@ public class StatusService {
     ObjectMapper objectMapper;
 
     @Autowired
-    StatusRepository seasonRepository;
+    StatusRepository statusRepository;
 
     public List<StatusDTO> getAllStatus() {
-        return seasonRepository.findAll().stream()
+        return statusRepository.getAllStatus().stream()
                 .map(c -> objectMapper.convertValue(c, StatusDTO.class))
                 .toList();
+    }
+
+    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus() {
+        return statusRepository.recuperarRelatorioQuantidadeStatus();
     }
 }

@@ -16,9 +16,5 @@ public class GeoCitiesService {
     private ObjectMapper objectMapper;
     @Autowired
     private GeoCitiesRepository geoCitiesRepository;
-    public List<GeoCitiesDTO> getAllGeoCities(){
-        return geoCitiesRepository.findAll().stream()
-                .map(c -> objectMapper.convertValue(c, GeoCitiesDTO.class))
-                .toList();
-    }
+
 }
