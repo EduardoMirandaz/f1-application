@@ -1,6 +1,5 @@
 <template>
     <div class="homepage">
-        <h2 class="titulo ajusteMargin">{{ name }}</h2>
         <div class="gridOverview">
             <div class="box">
                 <h3>Vitórias</h3>
@@ -77,10 +76,6 @@ export default {
 .titulo {
     margin-bottom: 20px;
     margin-top: 40px;
-}
-
-.ajusteMargin {
-    margin-top: -10px;
 }
 
 .box {

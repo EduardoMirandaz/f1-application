@@ -1,6 +1,5 @@
 <template>
     <div class="homepage">
-        <h2 class="titulo">{{ name }}</h2>
         <div class="gridOverview">
             <div class="box">
                 <h3>Vitórias</h3>

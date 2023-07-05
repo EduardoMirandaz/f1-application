@@ -1,7 +1,5 @@
 <template>
     <div class="element-manager">
-        <NavBar :titulo="person.name" :tipo="person.type" isHomePage />
-
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
@@ -88,13 +86,12 @@ import { ElementService } from '../services/ElementService.js'
 import CardView from './CardView.vue';
 import PaginationTable from './PaginationTable.vue';
 import SpinnerLoader from './SpinnerLoader.vue'
-import NavBar from './NavBar.vue'
 import ModalElement from './ModalElement.vue'
 import AddElement from './AddElement.vue'
 
 export default {
     name: 'ElementManager',
-    components: { SpinnerLoader, CardView, PaginationTable, NavBar, ModalElement, AddElement },
+    components: { SpinnerLoader, CardView, PaginationTable, ModalElement, AddElement },
     props: {
         viewRole: {
             type: Boolean,

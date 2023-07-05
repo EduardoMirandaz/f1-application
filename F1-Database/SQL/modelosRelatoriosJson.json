@@ -174,6 +174,24 @@ cidades =
                     }, 
                 ]
 
+
+/* Relatório 3 */
+resultadosPilotos = [
+    {
+        piloto: 'Luiz Hamilton',
+        vitorias: 12
+    },
+    {  
+        piloto: 'Airton Senna',
+        vitorias: 231
+    },
+    {
+        piloto: 'Fernando Alonso',
+        vitorias: 2
+    }
+]
+
+
 /* Relatorio 5 */
 resultadoPiloto: {
 		    geral:[

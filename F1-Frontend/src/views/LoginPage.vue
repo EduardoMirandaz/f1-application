@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar titulo="Sistema da Fórmula 1" isLoginPage />
+    <NavBar isLoginPage />
     <section class="gradient-custom">
       <div class="container align-items-center">
         <div class="row d-flex justify-content-center align-items-center h-100">
