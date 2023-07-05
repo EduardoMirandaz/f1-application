@@ -28,7 +28,7 @@ nome do status e sua contagem.</h3>
             <h3 class="relatorio1Desc">Esse relatório indica os aeroportos de médio e largo porte no Brasil que estejam no máximo a 100km de distância da cidade brasileira que for informada a baixo:</h3>
             <div class="busca">
                 <h4 class="buscaTitle">Buscar por: </h4>
-                <input class="buscaInput form-control form-control-lg" type="text" placeholder="Digite o nome da cidade" @keypress="handleKeyPress">
+                <input class="buscaInput form-control form-control-lg" v-model="busca" type="text" placeholder="Digite o nome da cidade" @keypress="handleKeyPress">
                 <button class="buscaButton btn btn-lg px-5 btn btn-success" type="submit" @click="buscar()">Buscar</button>
             </div>
             <div v-if="cidades.length > 0" class="ordenadores">
@@ -57,7 +57,7 @@ nome do status e sua contagem.</h3>
                                 <p><span class="label">Código IATA:</span> {{ aeroporto.codigo_IATA }}</p>
                                 <p><span class="label">Aeroporto:</span> {{ aeroporto.aeroporto }}</p>
                                 <p><span class="label">Cidade:</span> {{ aeroporto.cidade_aeroporto }}</p>
-                                <p><span class="label">Distância:</span> {{ aeroporto.distancia_em_km }}</p>
+                                <p><span class="label">Distância:</span> {{ aeroporto.distancia_em_km.toFixed(2) }}km</p>
                                 <p><span class="label">Tipo:</span> {{ aeroporto.tipo_aeroporto }}</p>
                             </div>
                     </div>
@@ -78,16 +78,18 @@ nome do status e sua contagem.</h3>
                 relatorio2: false,
                 selecionado: 1,
                 statusList:[],
-                cidades: []
+                cidades: [],
+                busca: ""
             }
         },
         methods:{
             mudarParaORelatorio1(){
                 this.relatorio1 = true
                 this.relatorio2 = false
+                this.selecionado = 1
                 this.cidades = []
                 this.statusList = [
-                { "status": "Finished", "quantity": 7123 },
+                    { "status": "Finished", "quantity": 7123 },
                     { "status": "+1 Lap", "quantity": 3856 },
                     { "status": "Engine", "quantity": 2014 },
                     { "status": "+2 Laps", "quantity": 1594 },
@@ -145,6 +147,9 @@ nome do status e sua contagem.</h3>
             mudarParaORelatorio2(){
                 this.relatorio1 = false
                 this.relatorio2 = true
+                this.cidades = []
+                this.statusList = []
+                this.selecionado = 3
             },
             mudarOrdenador(number){
                 this.selecionado = number
@@ -202,7 +207,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Rio de Janeiro",
                                "codigo_IATA": "",
                                "aeroporto": "Campo Délio Jardim de Mattos Airport",
                                "cidade_aeroporto": "Rio de Janeiro",
@@ -210,7 +214,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "São Paulo",
                                "codigo_IATA": "GRU",
                                "aeroporto": "Guarulhos - Governador André Franco Montoro International Airport",
                                "cidade_aeroporto": "São Paulo",
@@ -218,7 +221,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "large_airport"
                            },
                            {
-                               "nome_cidade": "Salvador",
                                "codigo_IATA": "SSA",
                                "aeroporto": "Deputado Luiz Eduardo Magalhães International Airport",
                                "cidade_aeroporto": "Salvador",
@@ -226,7 +228,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "large_airport"
                            },
                            {
-                               "nome_cidade": "Belo Horizonte",
                                "codigo_IATA": "CNF",
                                "aeroporto": "Tancredo Neves International Airport",
                                "cidade_aeroporto": "Belo Horizonte",
@@ -234,7 +235,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "large_airport"
                            },
                            {
-                               "nome_cidade": "Juiz de Fora",
                                "codigo_IATA": "IZA",
                                "aeroporto": "Presidente Itamar Franco Airport",
                                "cidade_aeroporto": "Juiz de Fora",
@@ -242,15 +242,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Juiz de Fora",
-                               "codigo_IATA": "IZA",
-                               "aeroporto": "Presidente Itamar Franco Airport",
-                               "cidade_aeroporto": "Juiz de Fora",
-                               "distancia_em_km": 33.43218457557592,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "nome_cidade": "Rio de Janeiro",
                                "codigo_IATA": "SNZ",
                                "aeroporto": "Santa Cruz Air Force Base",
                                "cidade_aeroporto": "Rio de Janeiro",
@@ -258,7 +249,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Oriximiná",
                                "codigo_IATA": "TMT",
                                "aeroporto": "Trombetas Airport",
                                "cidade_aeroporto": "Oriximiná",
@@ -266,7 +256,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Almeirim",
                                "codigo_IATA": "MEU",
                                "aeroporto": "Monte Dourado - Serra do Areão Airport",
                                "cidade_aeroporto": "Almeirim",
@@ -281,7 +270,6 @@ nome do status e sua contagem.</h3>
                        "long": -312533,
                        aeroportosProximos:[
                            {
-                               "nome_cidade": "Curitiba",
                                "codigo_IATA": "CWB",
                                "aeroporto": "Afonso Pena Airport",
                                "cidade_aeroporto": "Curitiba",
@@ -289,7 +277,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Rio Branco",
                                "codigo_IATA": "RBR",
                                "aeroporto": "Rio Branco-Plácido de Castro International Airport",
                                "cidade_aeroporto": "Rio Branco",
@@ -297,7 +284,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Rondonópolis",
                                "codigo_IATA": "ROO",
                                "aeroporto": "Maestro Marinho Franco Airport",
                                "cidade_aeroporto": "Rondonópolis",
@@ -305,7 +291,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Bauru",
                                "codigo_IATA": "JTC",
                                "aeroporto": "Bauru/Arealva–Moussa Nakhal Tobias State Airport",
                                "cidade_aeroporto": "Bauru",
@@ -313,7 +298,6 @@ nome do status e sua contagem.</h3>
                                "tipo_aeroporto": "medium_airport"
                            },
                            {
-                               "nome_cidade": "Natal",
                                "codigo_IATA": "NAT",
                                "aeroporto": "São Gonçalo do Amarante - Governador Aluízio Alves International Airport",
                                "cidade_aeroporto": "Natal",
@@ -323,6 +307,11 @@ nome do status e sua contagem.</h3>
                         ]
                     }, 
                 ]
+            },
+            handleKeyPress(event) {
+                if (event.key === 'Enter') {
+                    this.buscar();
+                }
             }
         }
     }

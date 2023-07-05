@@ -1,21 +1,9 @@
 {
-  "person" : {
+  "person": {
     "name": "Ferrari",
     "type": "Escuderia"
   },
   "elements": [
-    {
-      "name": "Ivan",
-      "id": "1337",
-      "country": "BR",
-      "groupId": 1
-    },
-    {
-      "name": "Plot",
-      "id": 123457,
-      "country": "KR",
-      "groupId": 1
-    },
     {
       "name": "Plot",
       "id": 1232457,
