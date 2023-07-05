@@ -34,29 +34,32 @@ nome do status e sua contagem.</h3>
             <div v-if="cidades.length > 0" class="ordenadores">
                 <h4>Ordenar por: </h4>
                 <div class="ordenador" @click="mudarOrdenador(0)" :class="{ 'selecionado': selecionado == 0}">
-                    <h4>Nome da Cidade</h4>
-                </div>
-                <div class="ordenador" @click="mudarOrdenador(1)" :class="{ 'selecionado': selecionado == 1}">
                     <h4>Código IATA</h4>
                 </div>
-                <div class="ordenador" @click="mudarOrdenador(2)" :class="{ 'selecionado': selecionado == 2}">
+                <div class="ordenador" @click="mudarOrdenador(1)" :class="{ 'selecionado': selecionado == 1}">
                     <h4>Aeroporto</h4>
                 </div>
-                <div class="ordenador" @click="mudarOrdenador(3)" :class="{ 'selecionado': selecionado == 3}">
+                <div class="ordenador" @click="mudarOrdenador(2)" :class="{ 'selecionado': selecionado == 2}">
                     <h4>Cidade do Aeroporto</h4>
                 </div>
-                <div class="ordenador" @click="mudarOrdenador(4)" :class="{ 'selecionado': selecionado == 4}">
+                <div class="ordenador" @click="mudarOrdenador(3)" :class="{ 'selecionado': selecionado == 3}">
                     <h4>Distância em Km</h4>
                 </div>
-                <div class="ordenador" @click="mudarOrdenador(5)" :class="{ 'selecionado': selecionado == 5}">
+                <div class="ordenador" @click="mudarOrdenador(4)" :class="{ 'selecionado': selecionado == 4}">
                     <h4>Tipo Aeroporto</h4>
                 </div>
             </div>
             <div class="container mt-3" v-if="cidades.length > 0">
                 <div class="row cidades">
                     <div class="col-md-6 statusList" v-for="cidade in cidades" :key="cidade.nome">
-                        <h4>{{ cidade.nome }} - Latitude: {{ cidade.lat }} Longitude: {{ cidade.long }}</h4>
-                        
+                        <h4 class="cidades">{{ cidade.nome }} - Latitude: {{ cidade.lat }} Longitude: {{ cidade.long }}</h4>
+                            <div class="aeroporto" v-for="aeroporto in cidade.aeroportosProximos" :key="aeroporto.codigo_IATA">
+                                <p><span class="label">Código IATA:</span> {{ aeroporto.codigo_IATA }}</p>
+                                <p><span class="label">Aeroporto:</span> {{ aeroporto.aeroporto }}</p>
+                                <p><span class="label">Cidade:</span> {{ aeroporto.cidade_aeroporto }}</p>
+                                <p><span class="label">Distância:</span> {{ aeroporto.distancia_em_km }}</p>
+                                <p><span class="label">Tipo:</span> {{ aeroporto.tipo_aeroporto }}</p>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -74,8 +77,17 @@ nome do status e sua contagem.</h3>
                 relatorio1: false,
                 relatorio2: false,
                 selecionado: 1,
-                statusList:[
-                    { "status": "Finished", "quantity": 7123 },
+                statusList:[],
+                cidades: []
+            }
+        },
+        methods:{
+            mudarParaORelatorio1(){
+                this.relatorio1 = true
+                this.relatorio2 = false
+                this.cidades = []
+                this.statusList = [
+                { "status": "Finished", "quantity": 7123 },
                     { "status": "+1 Lap", "quantity": 3856 },
                     { "status": "Engine", "quantity": 2014 },
                     { "status": "+2 Laps", "quantity": 1594 },
@@ -128,15 +140,7 @@ nome do status e sua contagem.</h3>
                     { "status": "Water leak", "quantity": 32 },
                     { "status": "+10 Laps", "quantity": 32 },
                     { "status": "Alternator", "quantity": 31 }
-                ],
-                cidades: []
-            }
-        },
-        methods:{
-            mudarParaORelatorio1(){
-                this.relatorio1 = true
-                this.relatorio2 = false
-                this.cidades = []
+                ]
             },
             mudarParaORelatorio2(){
                 this.relatorio1 = false
@@ -159,6 +163,28 @@ nome do status e sua contagem.</h3>
                                                                 return 0;}
                                                             );
                 }
+                if(this.relatorio2){
+                    const keys = Object.keys(this.cidades[1].aeroportosProximos[1]);
+                    const ordenador = keys[number]
+                    this.cidades.forEach(cidade => {
+                        cidade.aeroportosProximos = cidade.aeroportosProximos.sort((a, b) => {
+                                                                    const labelA = a[ordenador];
+                                                                    const labelB = b[ordenador];
+                                                                    if (labelA < labelB) {
+                                                                        return -1;
+                                                                    }
+                                                                    if (labelA > labelB) {
+                                                                        return 1;
+                                                                    }
+                                                                    return 0;}
+                                                                );
+                    
+
+                        }
+                    );
+
+
+                }
             },
             buscar(){
                 this.cidades = 
@@ -169,7 +195,6 @@ nome do status e sua contagem.</h3>
                        "long": -312533,
                        aeroportosProximos:[
                            {
-                               "nome_cidade": "Maceió",
                                "codigo_IATA": "MCZ",
                                "aeroporto": "Zumbi dos Palmares Airport",
                                "cidade_aeroporto": "Maceió",
@@ -367,7 +392,7 @@ nome do status e sua contagem.</h3>
         justify-content: space-between;
         align-items: center;
         margin-bottom: 10px;
-        border-radius: 15px;
+        border-radius: 10px;
         border: 5px solid #198754;
         padding: 5px;
         cursor: pointer;
@@ -413,5 +438,19 @@ nome do status e sua contagem.</h3>
     .cidades{
         display: flex;
         flex-direction: column;
+        padding: 10px;
+    }
+
+    .aeroporto{
+        margin: 20px;
+        background-color: #1987542f;
+        color: #000;
+        font-size: 24px;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .label{
+        font-weight: bold;
     }
 </style>
