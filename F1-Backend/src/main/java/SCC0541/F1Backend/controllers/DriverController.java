@@ -33,4 +33,10 @@ public class DriverController {
         driverService.createDriver(createDriverDTO);
     }
 
+    @GetMapping("/relatorios/recuperar-vitorias")
+    public void getDriversVictories() {
+
+    }
+
+
 }
