@@ -32,7 +32,7 @@
                             <span class="fw-bold">{{ element.driverRef }}</span>
                         </li>
                         <li class="list-group-item">
-                            Número
+                            Número:
                             <span class="fw-bold">{{ element.number }}</span>
                         </li>
                         <li class="list-group-item">
@@ -59,7 +59,7 @@
                 </div>
                 <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
                     <ModalElement btn-title="" :btn-opt="false" modal-title="Visualizar" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye" v-if="viewRole" title="Visualizar">
-                        <ViewElement :element-id="element.id" />
+                        <ViewElement :element-id="element.id" :viewDriver="viewDriver" :viewConstructor="viewConstructor"/>
                     </ModalElement> 
                     <ModalElement btn-title="" :btn-opt="false" modal-title="Editar" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen" v-if="updateRole" title="Editar">
                         <EditElement :element-id="element.id"/>
