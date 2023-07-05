@@ -32,7 +32,6 @@ public class AirportService {
 
     public List<CloseAirportsResponseDTO> getCloserAirports(String nomeCidade) {
 
-
         List<FoundCitiesByName> geoCitiesModel = geoCitiesRepository
                 .getLatitudeLongitudeByName(nomeCidade)
                 .stream()

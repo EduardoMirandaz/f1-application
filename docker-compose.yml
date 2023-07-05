@@ -38,8 +38,7 @@ services:
       - ./F1-Database/csv/:/csv
     networks:
       - postgres-compose-network
-    before-start:
-      - rm -rf ./postgres-data # substitua pelo caminho correto do diretório de dados
+
 
 volumes:
   postgres-data:

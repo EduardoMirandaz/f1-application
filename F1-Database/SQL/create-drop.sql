@@ -265,6 +265,8 @@ CREATE TABLE Status(
     Status  TEXT
 );
 
+CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
+
 --== Airports 
 DROP TABLE IF EXISTS Airports CASCADE;
 CREATE TABLE Airports(
