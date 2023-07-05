@@ -3,35 +3,33 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h1 text-success fw-bold small">Add Element</p>
+                    <p class="h3 text-success fw-bold">Inserir</p>
                     <p class="fst-italic" style="font-size: 15px;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
-                        aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur
-                        doloribus odit illo dolorem!
+                        Adicione novos elementos à sua base de dados com facilidade usando o modal de adição.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <form @submit.prevent="submitCreate()">
                         <div class="mb-2">
-                            <input v-model="element.name" type="text" class="form-control" placeholder="Name" required>
+                            <input v-model="element.name" type="text" class="form-control" placeholder="Nome" required>
                         </div>
                         <div class="mb-2">
                             <input v-model="element.id" type="text" class="form-control" placeholder="ID" required>
                         </div>
                         <div class="mb-2">
-                            <input v-model="element.country" type="text" class="form-control" placeholder="Country"
+                            <input v-model="element.country" type="text" class="form-control" placeholder="País"
                                 required>
                         </div>
-                        <div class="mb-2">
+                        <!-- <div class="mb-2">
                             <input v-model="element.groupId" type="text" class="form-control" placeholder="Group ID"
                                 required>
-                        </div>
+                        </div> -->
                         <div class="mb-2 col-md-1">
-                            <input type="submit" class="btn btn-success" value="Create">
+                            <input type="submit" class="btn btn-success" value="Criar">
                         </div>
                     </form>
                 </div>
@@ -61,6 +59,12 @@ export default {
             groups: []
         }
     },
+    props: {
+        endPoint: {
+            type: String,
+            required: true
+        }
+    },
     // created: async function () {
     //     try {
     //         let response = await ElementService.getAllGroups();
@@ -72,7 +76,7 @@ export default {
     methods: {
         submitCreate: async function () {
             try {
-                let response = await ElementService.createElement(this.element);
+                let response = await ElementService.createElement(this.element, this.endPoint);
                 if (response) {
                     return this.$router.push('/');
                 } else {
@@ -82,7 +86,7 @@ export default {
                 console.error(error);
             }
         }
-    }
+    },
 }
 </script>
 

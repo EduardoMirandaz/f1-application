@@ -1,13 +1,11 @@
 <template>
-    <div class="view-element">
+    <div class="add-element text-center">
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h3 text-success fw-bold">View Element</p>
-                    <p class="fst-italic">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
-                        aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur
-                        doloribus odit illo dolorem!
+                    <p class="h3 text-success fw-bold">Visualizar</p>
+                    <p class="fst-italic" style="font-size: 15px;">
+                        Adicione novos elementos à sua base de dados com facilidade usando nosso modal de adição.
                     </p>
                 </div>
             </div>

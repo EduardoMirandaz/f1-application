@@ -3,28 +3,25 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h3 text-success fw-bold">Element Manager
+                    <p class="h3 text-success fw-bold">Gerenciador
                         <span class="btn">
-                            <ModalElement btn-title=" Add Element" :btn-opt="false" modal-title="Add Pilot" :visible="false"
+                            <ModalElement btn-title=" Adicionar Elemento" :btn-opt="false" modal-title="Adicionar" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
-                                btn-class-internal="fa fa-plus-circle">
-                                <AddElement />
+                                btn-class-internal="fa fa-plus-circle" title="Adicionar">
+                                <AddElement :end-point="'123456'"/>
                             </ModalElement>
                         </span>
-                        <span class="btn">
-                            <ModalElement btn-title=" Query Element" :btn-opt="true" modal-title="Query" :visible="false"
+                        <!-- <span class="btn">
+                            <ModalElement btn-title=" Consulta" :btn-opt="true" modal-title="Query" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle" btn-opt-title="Run Query" @btnClicked="resolveEvent">                                
                             </ModalElement>
-                        </span>
+                        </span> -->
                     </p>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eaque saepe libero, porro alias
-                        dolore
-                        maxime, ea sit voluptas vitae consequuntur suscipit corrupti aliquam natus nisi ad. Aperiam, quae
-                        ab?
+                        Bem-vindo ao painel de gerenciamento de elementos de base de dados, o local perfeito para controlar e administrar todos os dados importantes.
                     </p>
-                    <form>
+                    <!-- <form>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
@@ -37,7 +34,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
@@ -115,6 +112,10 @@ export default {
         },
         loading: {
             type: Boolean,
+            required: true
+        },
+        endPoint: {
+            type: String,
             required: true
         }
     },

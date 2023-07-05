@@ -11,7 +11,8 @@ export class ElementService {
         let dataURL = `${this.serverURL}/elements/${elementId}`;
         return axios.get(dataURL);
     }
-    static createElement(element){
+    static createElement(element, endPoint){
+        console.log(endPoint);
         let dataURL = `${this.serverURL}/elements/`;
         return axios.post(dataURL, element);
     }
@@ -62,7 +63,7 @@ export class ElementService {
     }
 
     static getRelatorio2(token, busca){
-        let dataURL = `${this.oficialBackendURL}airports/relatorios/exibir-aeroportos-proximos`;
+        let dataURL = `${this.oficialBackendURL}/airports/relatorios/exibir-aeroportos-proximos`;
          return axios.get(dataURL, 
             {
                 params: {nomeCidade:busca},
