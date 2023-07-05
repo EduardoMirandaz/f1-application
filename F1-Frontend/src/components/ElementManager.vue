@@ -6,11 +6,19 @@
             <div class="row">
                 <div class="col">
                     <p class="h3 text-success fw-bold">Element Manager
-                        <ModalElement btn-title=" Add Element" :btn-opt="false" modal-title="Add Pilot" :visible="false"
-                            variant="success" btn-class-external="btn btn-success btn-sm"
-                            btn-class-internal="fa fa-plus-circle">
-                            <AddElement />
-                        </ModalElement>
+                        <span class="btn">
+                            <ModalElement btn-title=" Add Element" :btn-opt="false" modal-title="Add Pilot" :visible="false"
+                                variant="success" btn-class-external="btn btn-success btn-sm"
+                                btn-class-internal="fa fa-plus-circle">
+                                <AddElement />
+                            </ModalElement>
+                        </span>
+                        <span class="btn">
+                            <ModalElement btn-title=" Query Element" :btn-opt="true" modal-title="Query" :visible="false"
+                                variant="success" btn-class-external="btn btn-success btn-sm"
+                                btn-class-internal="fa fa-plus-circle" btn-opt-title="Run Query" @btnClicked="resolveEvent">                                
+                            </ModalElement>
+                        </span>
                     </p>
                     <p class="fst-italic">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eaque saepe libero, porro alias
@@ -144,6 +152,9 @@ export default {
         },
         toggleComponent() {
             this.showComponent = !this.showComponent;
+        },
+        resolveEvent(){
+            console.log('Event');
         }
     }
 }
