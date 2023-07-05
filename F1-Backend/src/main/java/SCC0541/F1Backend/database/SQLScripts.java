@@ -39,4 +39,13 @@ public class SQLScripts {
             "FROM CONSTRUCTORS " +
             "WHERE constructorId=:id";
 
+    public static final String GET_RESULTS_COUNT_BY_STATUS = """
+            SELECT STATUS.STATUS,
+                   COUNT(*) AS QUANTIDADE_DE_RESULTADOS
+            FROM RESULTS
+                     JOIN STATUS ON RESULTS.STATUSID = STATUS.STATUSID
+            GROUP BY STATUS.STATUS
+            ORDER BY  QUANTIDADE_DE_RESULTADOS DESC;""";
+
+    public static final String FIND_ALL_STATUS = "SELECT * FROM STATUS";
 }

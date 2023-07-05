@@ -1,5 +1,6 @@
 package SCC0541.F1Backend.controllers;
 
+import SCC0541.F1Backend.dtos.QuantidadeStatusDTO;
 import SCC0541.F1Backend.dtos.StatusDTO;
 import SCC0541.F1Backend.services.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,5 +23,12 @@ public class StatusController {
     public List<StatusDTO> getAllStatus(){
         return statusService.getAllStatus();
     }
+
+    @GetMapping("/relatorio/quantidade-por-resultado")
+    public List<QuantidadeStatusDTO> recuperarRelatorioQuantidadeStatus(){
+        return statusService.recuperarRelatorioQuantidadeStatus();
+    }
+
+
 
 }
