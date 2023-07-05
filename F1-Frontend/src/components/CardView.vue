@@ -22,13 +22,13 @@
                     </ul>
                 </div>
                 <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
-                    <ModalElement btn-title="" :btn-opt="false" modal-title="Visualizar" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye" v-if="viewRole">
-                        <ViewElement :element-id="element.id"/>
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="Visualizar" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye" v-if="viewRole" title="Visualizar">
+                        <ViewElement :element-id="element.id" />
                     </ModalElement> 
-                    <ModalElement btn-title="" :btn-opt="false" modal-title="Editar" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen" v-if="updateRole">
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="Editar" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen" v-if="updateRole" title="Editar">
                         <EditElement :element-id="element.id"/>
                     </ModalElement>
-                    <button v-if="deleteRole" class="btn btn-danger my-1" @click="clickDeleteElement(element.id)">
+                    <button v-if="deleteRole" class="btn btn-danger my-1" @click="clickDeleteElement(element.id)" title="Deletar">
                         <i class="fa fa-trash"></i>
                     </button>
                 </div>

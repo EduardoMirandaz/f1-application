@@ -1,13 +1,11 @@
 <template>
     <div class="edit-element">
-        <div class="container mt-3">
+        <div class="container mt-3 text-center">
             <div class="row">
                 <div class="col">
                     <p class="h3 text-success fw-bold">Editar</p>
                     <p class="fst-italic">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
-                        aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur
-                        doloribus odit illo dolorem!
+                        Atualize seus elementos de base de dados com precisão e facilidade usando o modal de edição.
                     </p>
                 </div>
             </div>

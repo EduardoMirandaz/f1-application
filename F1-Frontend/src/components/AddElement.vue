@@ -3,16 +3,14 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h1 text-success fw-bold" style="font-size: 35px;">Inserir</p>
+                    <p class="h3 text-success fw-bold">Inserir</p>
                     <p class="fst-italic" style="font-size: 15px;">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
-                        aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur
-                        doloribus odit illo dolorem!
+                        Adicione novos elementos à sua base de dados com facilidade usando o modal de adição.
                     </p>
                 </div>
             </div>
         </div>
-        <div class="container mt-5">
+        <div class="container">
             <div class="row">
                 <div class="col-md-8">
                     <form @submit.prevent="submitCreate()">
