@@ -62,7 +62,7 @@ export class ElementService {
     }
 
     static getRelatorio2(token, busca){
-        let dataURL = `${this.oficialBackendURL}airports/relatorios/exibir-aeroportos-proximos`;
+        let dataURL = `${this.oficialBackendURL}/airports/relatorios/exibir-aeroportos-proximos`;
          return axios.get(dataURL, 
             {
                 params: {nomeCidade:busca},
