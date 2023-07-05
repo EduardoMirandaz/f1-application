@@ -54,9 +54,11 @@ export default {
           const response = await ElementService.authenticate(this.input);
           const token = response.data.token
           const permissoes = response.data.permissoes
+          const usuarioLogado = response.data.usuarioLogado
           if (token) {
             localStorage.setItem('token', token);
             localStorage.setItem('permissoes', permissoes);
+            localStorage.setItem('usuarioLogado', usuarioLogado);
             this.$router.push('/')
           }
         }

@@ -2,9 +2,9 @@
   <div>
     <NavBar :roletype="permissoes" isHomePage />
     <HomeAdmin v-if="permissoes == 'Administrador'" />
-    <HomeEscuderia :name="name" :vitorias="vitorias" :qtdPilotos="qtdPilotos" :anoInicio="anoInicio" :anoFim="anoFim"
+    <HomeEscuderia :name="usuarioLogado" :vitorias="vitorias" :qtdPilotos="qtdPilotos" :anoInicio="anoInicio" :anoFim="anoFim"
       v-if="permissoes == 'Escuderia'" />
-    <HomePiloto :name="name" :escuderia="escuderia" :vitorias="vitorias" :anoInicio="anoInicio" :anoFim="anoFim"
+    <HomePiloto :name="usuarioLogado" :vitorias="vitorias" :anoInicio="anoInicio" :anoFim="anoFim"
       v-if="permissoes == 'Piloto'" />
   </div>
 </template>
@@ -21,8 +21,8 @@ export default {
     return {
       token: "",
       permissoes: [],
-      name: "Ferrari",
-      escuderia: "",
+      name: "",
+      usuarioLogado: "",
       vitorias: 34,
       qtdPilotos: 54,
       anoInicio: 1981,
@@ -34,6 +34,7 @@ export default {
 
     this.token = window.localStorage.getItem('token')
     this.permissoes = window.localStorage.getItem('permissoes')
+    this.usuarioLogado = window.localStorage.getItem('usuarioLogado')
 
     if (!this.token) {
       this.$router.push('/login')
