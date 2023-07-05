@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="element-manager">
         <NavBar :titulo="person.name" :tipo="person.type" isHomePage />
 
         <div class="container mt-3">
@@ -87,6 +87,20 @@ import AddElement from './AddElement.vue'
 export default {
     name: 'ElementManager',
     components: { SpinnerLoader, CardView, PaginationTable, NavBar, ModalElement, AddElement },
+    props: {
+        viewRole: {
+            type: Boolean,
+            required: true
+        },
+        updateRole: {
+            type: Boolean,
+            required: true
+        },
+        deleteRole: {
+            type: Boolean,
+            required: true
+        }
+    },
     data: function () {
         return {
             loading: false,
@@ -96,9 +110,6 @@ export default {
             pageSize: 6,
             currentPage: 1,
             showComponent: true,
-            viewRole: true,
-            updateRole: true,
-            deleteRole: true
         }
     },
     computed: {

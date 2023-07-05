@@ -1,32 +1,29 @@
 <template>
-    <div>
-
-        <div class="homepage">
-            <h2 class="titulo ajusteMargin">{{ name }}</h2>
-            <div class="gridOverview">
-                <div class="box">
-                    <h3>Vitórias</h3>
-                    <span>{{ vitorias }}</span>
-                </div>
-                <div class="box">
-                    <h3>Pilotos</h3>
-                    <span>{{ qtdPilotos }}</span>
-                </div>
-                <div class="box">
-                    <h3>De</h3>
-                    <span>{{ anoInicio }}</span>
-                </div>
-                <div class="box">
-                    <h3>Até</h3>
-                    <span>{{ anoFim }}</span>
-                </div>
+    <div class="homepage">
+        <h2 class="titulo ajusteMargin">{{ name }}</h2>
+        <div class="gridOverview">
+            <div class="box">
+                <h3>Vitórias</h3>
+                <span>{{ vitorias }}</span>
             </div>
-            <h2 class="titulo">Acessar Relatórios</h2>
-            <div>
-                <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
+            <div class="box">
+                <h3>Pilotos</h3>
+                <span>{{ qtdPilotos }}</span>
             </div>
-            <ElementManager />
+            <div class="box">
+                <h3>De</h3>
+                <span>{{ anoInicio }}</span>
+            </div>
+            <div class="box">
+                <h3>Até</h3>
+                <span>{{ anoFim }}</span>
+            </div>
         </div>
+        <h2 class="titulo">Acessar Relatórios</h2>
+        <div>
+            <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
+        </div>
+        <ElementManager :view-role="true" :update-role="true" :delete-role="true" />
     </div>
 </template>
 
