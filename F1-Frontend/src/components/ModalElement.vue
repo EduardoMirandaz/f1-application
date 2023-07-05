@@ -1,11 +1,10 @@
 <template>
-    <div class="modal-element">
+    <span class="modal-element">
         <div :class="btnClassExternal" @click="openCloseFun()">
             <i :class="btnClassInternal" data-toggle="modal" data-target="#exampleModal">
                 {{ btnTitle }}
             </i>
         </div>
-
         <div v-if="openClose" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalLabel" aria-hidden="true" style="display:block">
             <div class="modal-dialog" role="document">
@@ -23,14 +22,14 @@
                         </slot>
                     </div>
                     <div class="modal-footer">
+                        <button v-if="btnOpt" type="button" class="btn btn-primary">{{ btnOptTitle }}</button>
                         <button type="button" :class="'btn btn-' + variant" data-dismiss="modal"
                             @click="openCloseFun()">Close</button>
-                        <button v-if="btnOpt" type="button" class="btn btn-primary">{{ btnOptTitle }}</button>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </span>
 </template>
 
 <script>

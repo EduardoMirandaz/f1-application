@@ -30,7 +30,7 @@
                             <input v-model="element.groupId" type="text" class="form-control" placeholder="Group ID"
                                 required>
                         </div>
-                        <div class="mb-2">
+                        <div class="mb-2 col-md-1">
                             <input type="submit" class="btn btn-success" value="Create">
                         </div>
                     </form>
