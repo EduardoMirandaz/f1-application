@@ -8,7 +8,7 @@
                 <div class="col-sm-7">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            Name:
+                            Nome:
                             <span class="fw-bold">{{ element.name }}</span>
                         </li>
                         <li class="list-group-item">
@@ -16,7 +16,7 @@
                             <span class="fw-bold">{{ element.id }}</span>
                         </li>
                         <li class="list-group-item">
-                            Country:
+                            País:
                             <span class="fw-bold">{{ element.country }}</span>
                         </li>
                     </ul>

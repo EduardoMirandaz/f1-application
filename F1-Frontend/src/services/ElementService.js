@@ -11,7 +11,8 @@ export class ElementService {
         let dataURL = `${this.serverURL}/elements/${elementId}`;
         return axios.get(dataURL);
     }
-    static createElement(element){
+    static createElement(element, endPoint){
+        console.log(endPoint);
         let dataURL = `${this.serverURL}/elements/`;
         return axios.post(dataURL, element);
     }

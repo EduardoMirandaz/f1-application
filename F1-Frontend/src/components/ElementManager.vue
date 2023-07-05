@@ -8,7 +8,7 @@
                             <ModalElement btn-title=" Adicionar Elemento" :btn-opt="false" modal-title="Adicionar" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle" title="Adicionar">
-                                <AddElement />
+                                <AddElement :end-point="'123456'"/>
                             </ModalElement>
                         </span>
                         <!-- <span class="btn">
@@ -112,6 +112,10 @@ export default {
         },
         loading: {
             type: Boolean,
+            required: true
+        },
+        endPoint: {
+            type: String,
             required: true
         }
     },

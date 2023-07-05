@@ -22,7 +22,7 @@
         <div>
             <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
         </div>
-        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading"/>
+        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading" :end-point="endPoint"/>
     </div>
 </template>
 
@@ -59,7 +59,8 @@ export default {
         return {
             loading: false,
             elements: [],
-            person: {}
+            person: {},
+            endPoint: '123456'
         }
     },
     created: async function () {
