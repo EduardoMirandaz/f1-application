@@ -46,15 +46,14 @@ export class ElementService {
         )
     }
 
-    static getRelatorio1(token){
+    static getRelatorio146(token){
         let dataURL = `${this.oficialBackendURL}/status/relatorio/quantidade-por-resultado`;
-        let bearerToken = "Bearer" + token
          return axios.get(dataURL, 
             {
                 method: 'GET',
                 headers: {
                 'Content-Type': 'application/json', // Define o cabeçalho Content-Type corretamente
-                'Authorization': bearerToken
+                'Authorization': token
                 },
                 timeout: 10000
             },   
@@ -62,6 +61,21 @@ export class ElementService {
     }
 
     static getRelatorio2(token, busca){
+        let dataURL = `${this.oficialBackendURL}/airports/relatorios/exibir-aeroportos-proximos`;
+         return axios.get(dataURL, 
+            {
+                params: {nomeCidade:busca},
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+                },
+                timeout: 10000
+            },   
+        )
+    }
+
+    static getRelatorio3(token, busca){
         let dataURL = `${this.oficialBackendURL}/airports/relatorios/exibir-aeroportos-proximos`;
          return axios.get(dataURL, 
             {

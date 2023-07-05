@@ -45,6 +45,68 @@ ORDER BY
     distancia_em_km;
 
 
+
+
+-- Relatorio 3
+CREATE INDEX idx_results_position_constructor ON results (positionorder, constructorid);
+
+
+CREATE OR REPLACE FUNCTION get_driver_victories(constructor_id INT) RETURNS TABLE (
+    nome_piloto TEXT,
+    vitorias BIGINT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        CONCAT(driver.forename, ' ', driver.surname) AS nome_piloto,
+        COUNT(*) AS vitorias
+    FROM
+        driver
+    JOIN
+        results ON driver.driverid = results.driverid
+    JOIN
+        races ON results.raceid = races.raceid
+    WHERE
+        results.positionorder = 1
+        AND results.constructorid = constructor_id
+    GROUP BY
+        driver.driverid;
+
+    RETURN;
+END;
+$$ LANGUAGE plpgsql;
+
+
+SELECT * FROM get_driver_victories(27); -- substituir o valor passado na função pelo constructorid
+
+
+-- Relatorio 4
+
+CREATE OR REPLACE FUNCTION get_status_counts(constructor_id INT) RETURNS TABLE (
+    status TEXT,
+    contagem BIGINT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        status.status AS status,
+        COUNT(*) AS contagem
+    FROM
+        results
+    JOIN
+        status ON results.statusid = status.statusid
+    WHERE
+        results.constructorid = constructor_id
+    GROUP BY
+        status.statusid;
+
+    RETURN;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM get_status_counts(25); -- substituir o valor passado na função pelo constructorid
+
+
 -- Relatorio 5
 
 CREATE INDEX IF NOT EXISTS idx_results_driver_position ON results (driverid, positionorder);
@@ -94,19 +156,19 @@ CREATE OR REPLACE FUNCTION get_pilot_status_counts(pilot_id INT) RETURNS TABLE (
 BEGIN
     RETURN QUERY
     SELECT
-        status.status AS status_name,
-        COUNT(*) AS count
-    FROM
-        results
-    JOIN
-        status ON results.statusid = status.statusid
-    WHERE
-        results.driverid = pilot_id
-    GROUP BY
-        status.status;
-
-    RETURN;
-END;
-$$ LANGUAGE plpgsql;
-
-SELECT * FROM get_pilot_status_counts(102); -- substituir com o driverid
+	        status.status AS status_name,
+	        COUNT(*) AS count
+	    FROM
+	        results
+	    JOIN
+	        status ON results.statusid = status.statusid
+	    WHERE
+	        results.driverid = pilot_id
+	    GROUP BY
+	        status.status;
+	
+	    RETURN;
+	END;
+	$$ LANGUAGE plpgsql;
+	
+	SELECT * FROM get_pilot_status_counts(102); -- substituir com o driverid
