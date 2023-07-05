@@ -22,10 +22,10 @@
                     </ul>
                 </div>
                 <div class="col-sm-1 d-flex flex-column justify-content-center align-items-center">
-                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye">
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-warning my-1" btn-class-internal="fa fa-eye" v-if="viewRole">
                         <ViewElement :element-id="element.id"/>
                     </ModalElement> 
-                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen">
+                    <ModalElement btn-title="" :btn-opt="false" modal-title="View Element" :visible="false" variant="success" btn-class-external="btn btn-primary my-1" btn-class-internal="fa fa-pen" v-if="updateRole">
                         <EditElement :element-id="element.id"/>
                     </ModalElement>
                     <button v-if="deleteRole" class="btn btn-danger my-1" @click="clickDeleteElement(element.id)">

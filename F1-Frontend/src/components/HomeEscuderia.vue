@@ -25,7 +25,7 @@
             <div>
                 <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
             </div>
-            <ElementManager />
+            <ElementManager :view-role="true" :update-role="true" :delete-role="true"/>
         </div>
     </div>
 </template>
