@@ -393,7 +393,6 @@ nome do status e sua contagem.</h3>
         color: #FFF;
         transition: 0.2s;
     }
-    /* Estilos para a lista de status */
     .statusList {
         display: flex;
         flex-direction: column;

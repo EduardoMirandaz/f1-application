@@ -211,3 +211,65 @@ resultadoPiloto: {
                         }
                     ]
                 }
+                
+                
+                
+                
+/* Relatorio 6 */
+statusList = [
+                    { "status": "Finished", "quantity": 7123 },
+                    { "status": "+1 Lap", "quantity": 3856 },
+                    { "status": "Engine", "quantity": 2014 },
+                    { "status": "+2 Laps", "quantity": 1594 },
+                    { "status": "Accident", "quantity": 1046 },
+                    { "status": "Did not qualify", "quantity": 1025 },
+                    { "status": "Collision", "quantity": 838 },
+                    { "status": "Gearbox", "quantity": 805 },
+                    { "status": "Spun off", "quantity": 792 },
+                    { "status": "+3 Laps", "quantity": 731 },
+                    { "status": "Suspension", "quantity": 431 },
+                    { "status": "+4 Laps", "quantity": 405 },
+                    { "status": "Did not prequalify", "quantity": 331 },
+                    { "status": "Transmission", "quantity": 321 },
+                    { "status": "Electrical", "quantity": 316 },
+                    { "status": "Brakes", "quantity": 251 },
+                    { "status": "Withdrew", "quantity": 244 },
+                    { "status": "+5 Laps", "quantity": 221 },
+                    { "status": "Clutch", "quantity": 214 },
+                    { "status": "Not classified", "quantity": 172 },
+                    { "status": "Fuel system", "quantity": 155 },
+                    { "status": "+6 Laps", "quantity": 153 },
+                    { "status": "Turbo", "quantity": 146 },
+                    { "status": "Disqualified", "quantity": 143 },
+                    { "status": "Hydraulics", "quantity": 138 },
+                    { "status": "Overheating", "quantity": 130 },
+                    { "status": "Ignition", "quantity": 128 },
+                    { "status": "Oil leak", "quantity": 123 },
+                    { "status": "Throttle", "quantity": 111 },
+                    { "status": "Out of fuel", "quantity": 100 },
+                    { "status": "+7 Laps", "quantity": 99 },
+                    { "status": "Halfshaft", "quantity": 99 },
+                    { "status": "Retired", "quantity": 95 },
+                    { "status": "Wheel", "quantity": 88 },
+                    { "status": "Oil pressure", "quantity": 87 },
+                    { "status": "Fuel pump", "quantity": 66 },
+                    { "status": "Differential", "quantity": 61 },
+                    { "status": "Tyre", "quantity": 55 },
+                    { "status": "Handling", "quantity": 54 },
+                    { "status": "+8 Laps", "quantity": 52 },
+                    { "status": "Fuel leak", "quantity": 50 },
+                    { "status": "Steering", "quantity": 47 },
+                    { "status": "Collision damage", "quantity": 45 },
+                    { "status": "Radiator", "quantity": 42 },
+                    { "status": "Puncture", "quantity": 41 },
+                    { "status": "Power Unit", "quantity": 41 },
+                    { "status": "+9 Laps", "quantity": 38 },
+                    { "status": "Wheel bearing", "quantity": 37 },
+                    { "status": "Injection", "quantity": 36 },
+                    { "status": "Fuel pressure", "quantity": 35 },
+                    { "status": "Water leak", "quantity": 32 },
+                    { "status": "+10 Laps", "quantity": 32 },
+                    { "status": "Alternator", "quantity": 31 }
+                ]
+
+
