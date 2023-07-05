@@ -65,18 +65,6 @@ public class SecurityConfiguration{
     }
 
     @Bean
-<<<<<<< HEAD
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedMethods("*")
-                        .allowedOrigins("http://localhost:3000")
-                        .exposedHeaders("Authorization");
-            }
-        };
-=======
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowedOrigins(List.of("http://localhost:3000", "http://172.21.0.2:3000"));
@@ -87,7 +75,6 @@ public class SecurityConfiguration{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
->>>>>>> ececf303121b27cc2030f95a04647c5df9caddd5
     }
 
 
