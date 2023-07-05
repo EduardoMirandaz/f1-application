@@ -3,7 +3,7 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h1 text-success fw-bold small">Add Element</p>
+                    <p class="h1 text-success fw-bold" style="font-size: 35px;">Inserir</p>
                     <p class="fst-italic" style="font-size: 15px;">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
                         aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur

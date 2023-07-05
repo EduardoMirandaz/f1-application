@@ -4,10 +4,12 @@
         <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
         <h2 class="homeAdminGerenciarLabel">Gerenciar Tabelas</h2>
         <div class="gridHome">
-            <router-link class="btn btn-lg px-5 btn btn-success" to="/escuderia">Gerenciar Escuderias</router-link>
-            <router-link class="btn btn-lg px-5 btn btn-success" to="/piloto">Gerenciar Pilotos</router-link>
+            <button class="btn btn-lg px-5 btn btn-success" @click="showManagerMethodEscuderia()">Gerenciar
+                Escuderias</button>
+            <button class="btn btn-lg px-5 btn btn-success" @click="showManagerMethodPiloto()">Gerenciar Pilotos</button>
         </div>
-        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading"/>
+        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements"
+            :responseDataPerson="person" :loading="loading" v-if="showManagerPiloto || showManagerEscuderia" />
     </div>
 </template>
 
@@ -22,20 +24,45 @@ export default {
         return {
             loading: false,
             elements: [],
-            person: {}
+            person: {},
+            showManagerEscuderia: false,
+            showManagerPiloto: false
         }
     },
-    created: async function () {
-        try {
-            this.loading = true;
-            let response = await ElementService.getAllElements();
-            this.elements = response.data;
-            let nresponse = await ElementService.getPerson();
-            this.person = nresponse.data;
-            this.loading = false;
-        } catch (error) {
-            this.errorMessage = error;
-            this.loading = false;
+    methods: {
+        async showManagerMethodEscuderia() {
+            this.showManagerEscuderia = !this.showManagerEscuderia;
+            this.showManagerPiloto = false;
+            if (this.showManagerEscuderia) {
+                try {
+                    this.loading = true;
+                    let response = await ElementService.getAllElements();
+                    this.elements = response.data;
+                    let nresponse = await ElementService.getPerson();
+                    this.person = nresponse.data;
+                    this.loading = false;
+                } catch (error) {
+                    this.errorMessage = error;
+                    this.loading = false;
+                }
+            }
+        },
+        async showManagerMethodPiloto() {
+            this.showManagerPiloto = !this.showManagerPiloto;
+            this.showManagerEscuderia = false;
+            if (this.showManagerPiloto) {
+                try {
+                    this.loading = true;
+                    let response = await ElementService.getAllElements();
+                    this.elements = response.data;
+                    let nresponse = await ElementService.getPerson();
+                    this.person = nresponse.data;
+                    this.loading = false;
+                } catch (error) {
+                    this.errorMessage = error;
+                    this.loading = false;
+                }
+            }
         }
     }
 }

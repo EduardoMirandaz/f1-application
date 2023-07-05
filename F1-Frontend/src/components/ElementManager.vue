@@ -3,20 +3,20 @@
         <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h3 text-success fw-bold">Element Manager
+                    <p class="h3 text-success fw-bold">Gerenciador
                         <span class="btn">
-                            <ModalElement btn-title=" Add Element" :btn-opt="false" modal-title="Add Pilot" :visible="false"
+                            <ModalElement btn-title=" Adicionar Elemento" :btn-opt="false" modal-title="Add Pilot" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle">
                                 <AddElement />
                             </ModalElement>
                         </span>
-                        <span class="btn">
-                            <ModalElement btn-title=" Query Element" :btn-opt="true" modal-title="Query" :visible="false"
+                        <!-- <span class="btn">
+                            <ModalElement btn-title=" Consulta" :btn-opt="true" modal-title="Query" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle" btn-opt-title="Run Query" @btnClicked="resolveEvent">                                
                             </ModalElement>
-                        </span>
+                        </span> -->
                     </p>
                     <p class="fst-italic">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus eaque saepe libero, porro alias
@@ -24,7 +24,7 @@
                         maxime, ea sit voluptas vitae consequuntur suscipit corrupti aliquam natus nisi ad. Aperiam, quae
                         ab?
                     </p>
-                    <form>
+                    <!-- <form>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="row">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>
