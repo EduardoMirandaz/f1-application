@@ -39,9 +39,13 @@ public class SecurityConfiguration{
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
                         .requestMatchers("/usuario/listar-usuarios").hasAuthority("Administrador")
+                        .requestMatchers("/status/relatorio/quantidade-por-resultado").hasAuthority("Administrador")
+                        .requestMatchers("/airports/relatorios/exibir-aeroportos-proximos").hasAuthority("Administrador")
+                        .requestMatchers("/drivers/create").hasAuthority("Administrador")
+                        .requestMatchers("/constructors/create").hasAuthority("Administrador")
                         .requestMatchers("/usuario/login").permitAll()
                         .requestMatchers(caminhosIgnorados).permitAll()
-                        .anyRequest().permitAll()
+                        .anyRequest().authenticated()
                 );
 
         http.addFilterBefore(
