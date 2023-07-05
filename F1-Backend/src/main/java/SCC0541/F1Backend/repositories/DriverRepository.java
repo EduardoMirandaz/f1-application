@@ -2,6 +2,11 @@ package SCC0541.F1Backend.repositories;
 
 import SCC0541.F1Backend.database.SQLScripts;
 import SCC0541.F1Backend.dtos.CreateDriverDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoGeralDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoPilotoDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoPorAnoDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoPorCorridaDTO;
 import SCC0541.F1Backend.models.DriverModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -9,12 +14,10 @@ import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Repository
@@ -119,6 +122,7 @@ public class DriverRepository{
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         try{
+
             entityManager.getTransaction().begin();
 
             Query query = entityManager.createNativeQuery(
@@ -164,5 +168,83 @@ public class DriverRepository{
     }
 
 
+    public ResultadoPilotoDTO getDriversVictories(Integer idPiloto) {
 
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        try{
+
+            if (!entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().begin();
+            }
+
+
+            Query query = entityManager.createNativeQuery(
+                    SQLScripts.GET_PILOT_VICTORIES
+            );
+            query.setParameter("idPiloto", idPiloto);
+
+            List<Object[]> tuplas = query.getResultList();
+
+
+            ArrayList<ResultadoGeralDTO> resultadosGerais = new ArrayList<>();
+            ArrayList<ResultadoPorAnoDTO> resultadosPorAno = new ArrayList<>();
+            ArrayList<ResultadoPorCorridaDTO> resultadosPorCorrida = new ArrayList<>();
+
+
+            ArrayList<String> corridasDosTitulos = new ArrayList<>();
+            ArrayList<Integer> anosDosTitulos = new ArrayList<>();
+
+            for (Object[] tupla : tuplas) {
+                if(tupla[0] != null && tupla[1] != null){
+                    resultadosGerais.add(new ResultadoGeralDTO(
+                        (tupla[1] != null ? tupla[1].toString() : null),
+                        (tupla[0] != null ? Integer.valueOf(tupla[0].toString()) : null)
+                        )
+                    );
+                    corridasDosTitulos.add((tupla[1] != null ? tupla[1].toString() : null));
+                    anosDosTitulos.add((tupla[0] != null ? Integer.valueOf(tupla[0].toString()) : null));
+                }
+            }
+
+            for (Integer ano: anosDosTitulos) {
+                if(ano != null) {
+                    ResultadoPorAnoDTO resultadoNoAno = new ResultadoPorAnoDTO();
+                    resultadoNoAno.setAno(ano);
+                    for(ResultadoGeralDTO r : resultadosGerais){
+                        if(Objects.equals(r.getAnoCorrida(), ano)){
+                            resultadoNoAno.setTitulos(r.getNomeCorrida());
+                        }
+                    }
+                    resultadosPorAno.add(resultadoNoAno);
+                }
+            }
+
+            for (String corrida: corridasDosTitulos) {
+                if(corrida != null){
+                    ResultadoPorCorridaDTO resultadoNaCorrida = new ResultadoPorCorridaDTO();
+                    resultadoNaCorrida.setNomeCorrida(corrida);
+                    for(ResultadoGeralDTO r : resultadosGerais){
+                        if(Objects.equals(r.getNomeCorrida(), corrida)){
+                            resultadoNaCorrida.setAnos(r.getAnoCorrida());
+                        }
+                    }
+                    resultadosPorCorrida.add(resultadoNaCorrida);
+                }
+            }
+
+            return ResultadoPilotoDTO.builder()
+                    .geral(resultadosGerais)
+                    .porAno(resultadosPorAno)
+                    .porCorrida(resultadosPorCorrida)
+                    .build();
+
+        } catch (Exception exception) {
+            entityManager.getTransaction().rollback();
+            throw exception;
+        } finally {
+            entityManager.close();
+        }
+
+    }
 }

@@ -4,8 +4,12 @@ import SCC0541.F1Backend.dtos.ConstructorDTO;
 import SCC0541.F1Backend.dtos.CreateConstructorDTO;
 import SCC0541.F1Backend.dtos.CreateDriverDTO;
 import SCC0541.F1Backend.dtos.DriverDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoGeralDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_5.ResultadoPilotoDTO;
 import SCC0541.F1Backend.repositories.DriverRepository;
+import SCC0541.F1Backend.security.TokenService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,8 @@ public class DriverService {
     private ObjectMapper objectMapper;
     @Autowired
     private DriverRepository driverRepository;
+    @Autowired
+    private TokenService tokenService;
 
     public List<DriverDTO> list(){
         return driverRepository.findAll().stream()
@@ -39,4 +45,13 @@ public class DriverService {
     }
 
 
+    public ResultadoPilotoDTO getDriversVictories(String token) {
+
+        Claims body = tokenService.recoverBodyFromToken(token);
+
+        Integer originalId = body.get("idOriginal", Integer.class);
+
+        return driverRepository.getDriversVictories(originalId);
+
+    }
 }

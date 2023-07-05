@@ -27,5 +27,4 @@ public class AirportController {
         return airportService.getCloserAirports(nomeCidade);
     }
 
-
 }
