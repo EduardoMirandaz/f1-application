@@ -68,10 +68,10 @@ nome do status e sua contagem.</h3>
 </template>
 
 <script>
-
+    import { ElementService } from '../services/ElementService.js'
     export default {
         name: 'DashAdmin',
-        components: { },
+        components: {  },
         data(){
             return {
                 relatorio1: false,
@@ -83,10 +83,22 @@ nome do status e sua contagem.</h3>
             }
         },
         methods:{
-            mudarParaORelatorio1(){
+            async mudarParaORelatorio1(){
                 this.relatorio1 = true
                 this.relatorio2 = false
                 this.cidades = []
+
+                try {
+                    const token = window.localStorage.getItem('token')
+                    const response = await ElementService.getRelatorio1(token);
+                    alert(response)
+                
+                }
+                    catch (e) {
+                    console.log(e)
+                    console.log("Erro no login")
+                }
+
                 this.statusList = [
                     { "status": "Finished", "quantity": 7123 },
                     { "status": "+1 Lap", "quantity": 3856 },

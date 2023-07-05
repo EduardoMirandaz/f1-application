@@ -45,4 +45,19 @@ export class ElementService {
             },   
         )
     }
+
+    static getRelatorio1(token){
+        let dataURL = `${this.oficialBackendURL}/status/`;
+        let bearerToken = "Bearer" + token
+         return axios.get(dataURL, 
+            {
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json', // Define o cabeçalho Content-Type corretamente
+                'Authorization': bearerToken
+                },
+                timeout: 10000
+            },   
+        )
+    }
 }
