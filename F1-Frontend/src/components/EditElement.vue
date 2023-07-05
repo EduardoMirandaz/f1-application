@@ -60,7 +60,7 @@
                 </div>
             </div>
             <div class="mb-2">
-                <input type="submit" class="btn btn-success" value="Update">
+                <input type="submit" class="btn btn-success" value="Atualizar">
             </div>
         </div>
     </div>

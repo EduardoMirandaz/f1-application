@@ -6,15 +6,13 @@ import SCC0541.F1Backend.services.StatusService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Validated
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/status") // localhost:8080/status
 public class StatusController {
 

@@ -8,7 +8,7 @@
                             <ModalElement btn-title=" Adicionar Elemento" :btn-opt="false" modal-title="Adicionar" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle" title="Adicionar">
-                                <AddElement />
+                                <AddElement :end-point="endPoint" :addDriver="addDriver" :addConstructor="addConstructor"/>
                             </ModalElement>
                         </span>
                         <!-- <span class="btn">
@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-6" v-for="element in pagedElements" :key="element.id">
                         <CardView :element="element" :view-role="viewRole" :update-role="updateRole"
-                            :delete-role="deleteRole">
+                            :delete-role="deleteRole" :viewDriver="viewDriver" :viewConstructor="viewConstructor">
                         </CardView>
                     </div>
                 </div>
@@ -111,6 +111,26 @@ export default {
             required: true
         },
         loading: {
+            type: Boolean,
+            required: true
+        },
+        addDriver: {
+            type: Boolean,
+            required: true
+        },
+        addConstructor: {
+            type: Boolean,
+            required: true
+        },
+        endPoint: {
+            type: String,
+            required: true
+        },
+        viewDriver: {
+            type: Boolean,
+            required: true
+        },
+        viewConstructor: {
             type: Boolean,
             required: true
         }

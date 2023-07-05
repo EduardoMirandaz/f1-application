@@ -5,14 +5,12 @@ import SCC0541.F1Backend.dtos.RelatoriosDTOs.relatorio_2.CloseAirportsResponseDT
 import SCC0541.F1Backend.services.AirportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Validated
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/airports") // localhost:8080/airports
 public class AirportController {
