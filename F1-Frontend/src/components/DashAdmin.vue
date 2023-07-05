@@ -149,122 +149,20 @@ nome do status e sua contagem.</h3>
 
                 }
             },
-            buscar(){
-                this.cidades = 
-                [
-                   {
-                       "nome": "Palmas",
-                       "lat": -123122,
-                       "long": -312533,
-                       aeroportosProximos:[
-                           {
-                               "codigo_IATA": "MCZ",
-                               "aeroporto": "Zumbi dos Palmares Airport",
-                               "cidade_aeroporto": "Maceió",
-                               "distancia_em_km": 18.334337459440547,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "",
-                               "aeroporto": "Campo Délio Jardim de Mattos Airport",
-                               "cidade_aeroporto": "Rio de Janeiro",
-                               "distancia_em_km": 21.054782453529477,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "GRU",
-                               "aeroporto": "Guarulhos - Governador André Franco Montoro International Airport",
-                               "cidade_aeroporto": "São Paulo",
-                               "distancia_em_km": 21.46692425762662,
-                               "tipo_aeroporto": "large_airport"
-                           },
-                           {
-                               "codigo_IATA": "SSA",
-                               "aeroporto": "Deputado Luiz Eduardo Magalhães International Airport",
-                               "cidade_aeroporto": "Salvador",
-                               "distancia_em_km": 21.58471036151831,
-                               "tipo_aeroporto": "large_airport"
-                           },
-                           {
-                               "codigo_IATA": "CNF",
-                               "aeroporto": "Tancredo Neves International Airport",
-                               "cidade_aeroporto": "Belo Horizonte",
-                               "distancia_em_km": 31.88609470224482,
-                               "tipo_aeroporto": "large_airport"
-                           },
-                           {
-                               "codigo_IATA": "IZA",
-                               "aeroporto": "Presidente Itamar Franco Airport",
-                               "cidade_aeroporto": "Juiz de Fora",
-                               "distancia_em_km": 33.42876683533632,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "SNZ",
-                               "aeroporto": "Santa Cruz Air Force Base",
-                               "cidade_aeroporto": "Rio de Janeiro",
-                               "distancia_em_km": 55.122191487156186,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "TMT",
-                               "aeroporto": "Trombetas Airport",
-                               "cidade_aeroporto": "Oriximiná",
-                               "distancia_em_km": 66.56520341281421,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "MEU",
-                               "aeroporto": "Monte Dourado - Serra do Areão Airport",
-                               "cidade_aeroporto": "Almeirim",
-                               "distancia_em_km": 70.5572440938035,
-                               "tipo_aeroporto": "medium_airport"
-                           }
-                        ]
-                    }, 
-                    {
-                       "nome": "Palmas",
-                       "lat": -123122,
-                       "long": -312533,
-                       aeroportosProximos:[
-                           {
-                               "codigo_IATA": "CWB",
-                               "aeroporto": "Afonso Pena Airport",
-                               "cidade_aeroporto": "Curitiba",
-                               "distancia_em_km": 14.874290457270122,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "RBR",
-                               "aeroporto": "Rio Branco-Plácido de Castro International Airport",
-                               "cidade_aeroporto": "Rio Branco",
-                               "distancia_em_km": 14.94098487967697,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "ROO",
-                               "aeroporto": "Maestro Marinho Franco Airport",
-                               "cidade_aeroporto": "Rondonópolis",
-                               "distancia_em_km": 15.970973936232529,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "JTC",
-                               "aeroporto": "Bauru/Arealva–Moussa Nakhal Tobias State Airport",
-                               "cidade_aeroporto": "Bauru",
-                               "distancia_em_km": 17.168897982419114,
-                               "tipo_aeroporto": "medium_airport"
-                           },
-                           {
-                               "codigo_IATA": "NAT",
-                               "aeroporto": "São Gonçalo do Amarante - Governador Aluízio Alves International Airport",
-                               "cidade_aeroporto": "Natal",
-                               "distancia_em_km": 17.62816730753729,
-                               "tipo_aeroporto": "medium_airport"
-                           }
-                        ]
-                    }, 
-                ]
+            async buscar(){
+                try {
+                    const token = window.localStorage.getItem('token')
+                    const response = await ElementService.getRelatorio2(token, this.busca);
+                    this.cidades = response.data
+                    console.log(this.cidades)
+                    this.mudarOrdenador(1)
+                
+                }
+                    catch (e) {
+                    console.log(e)
+                    console.log("Erro no login")
+                }
+                
                 this.mudarOrdenador(3)
             },
             handleKeyPress(event) {

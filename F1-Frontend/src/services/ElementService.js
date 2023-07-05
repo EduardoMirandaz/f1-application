@@ -60,4 +60,19 @@ export class ElementService {
             },   
         )
     }
+
+    static getRelatorio2(token, busca){
+        let dataURL = `${this.oficialBackendURL}airports/relatorios/exibir-aeroportos-proximos`;
+         return axios.get(dataURL, 
+            {
+                params: {nomeCidade:busca},
+                method: 'GET',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+                },
+                timeout: 10000
+            },   
+        )
+    }
 }
