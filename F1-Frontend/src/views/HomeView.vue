@@ -1,6 +1,6 @@
 <template>
   <div>
-    <NavBar :tipo="permissoes" isHomePage />
+    <NavBar :roletype="permissoes" isHomePage />
     <HomeAdmin v-if="permissoes == 'Administrador'" />
     <HomeEscuderia :name="name" :vitorias="vitorias" :qtdPilotos="qtdPilotos" :anoInicio="anoInicio" :anoFim="anoFim"
       v-if="permissoes == 'Escuderia'" />

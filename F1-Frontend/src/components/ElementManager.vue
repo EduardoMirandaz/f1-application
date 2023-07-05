@@ -16,7 +16,7 @@
                         <span class="btn">
                             <ModalElement btn-title=" Query Element" :btn-opt="true" modal-title="Query" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
-                                btn-class-internal="fa fa-plus-circle" btn-opt-title="Run Query">                                
+                                btn-class-internal="fa fa-plus-circle" btn-opt-title="Run Query" @btnClicked="resolveEvent">                                
                             </ModalElement>
                         </span>
                     </p>
@@ -152,6 +152,9 @@ export default {
         },
         toggleComponent() {
             this.showComponent = !this.showComponent;
+        },
+        resolveEvent(){
+            console.log('Event');
         }
     }
 }

@@ -64,7 +64,7 @@ export default {
     components: { SpinnerLoader },
     props: {
         elementId: {
-            type: Object,
+            type: Number,
             required: true
         }
     },

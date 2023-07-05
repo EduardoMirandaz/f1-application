@@ -22,7 +22,7 @@
                         </slot>
                     </div>
                     <div class="modal-footer">
-                        <button v-if="btnOpt" type="button" class="btn btn-primary">{{ btnOptTitle }}</button>
+                        <button v-if="btnOpt" type="button" class="btn btn-primary" @click="emitEvent">{{ btnOptTitle }}</button>
                         <button type="button" :class="'btn btn-' + variant" data-dismiss="modal"
                             @click="openCloseFun()">Close</button>
                     </div>
@@ -78,6 +78,9 @@ export default {
     methods: {
         openCloseFun() {
             this.openClose = !this.openClose;
+        },
+        emitEvent() {
+            this.$emit('btnClicked');
         }
     },
     watch: {
