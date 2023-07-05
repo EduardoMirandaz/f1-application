@@ -5,19 +5,55 @@
                 <div class="col-sm-4">
                     <img src="../assets/img/person.png" alt="" class="contact-img">
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-7" v-if="viewConstructor">
                     <ul class="list-group">
+                        <li class="list-group-item">
+                            Ref. Construtor:
+                            <span class="fw-bold">{{ element.constructorRef }}</span>
+                        </li>
                         <li class="list-group-item">
                             Nome:
                             <span class="fw-bold">{{ element.name }}</span>
                         </li>
                         <li class="list-group-item">
-                            ID:
-                            <span class="fw-bold">{{ element.id }}</span>
+                            Nacionalidade:
+                            <span class="fw-bold">{{ element.nationality }}</span>
                         </li>
                         <li class="list-group-item">
-                            País:
-                            <span class="fw-bold">{{ element.country }}</span>
+                            URL:
+                            <span class="fw-bold">{{ element.url }}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-sm-7" v-if="viewDriver">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Piloto Ref.:
+                            <span class="fw-bold">{{ element.driverRef }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Número
+                            <span class="fw-bold">{{ element.number }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Código:
+                            <span class="fw-bold">{{ element.code }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Nome:
+                            <span class="fw-bold">{{ element.forename }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Sobrenome:
+                            <span class="fw-bold">{{ element.surname }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Data Nascimento:
+                            <span class="fw-bold">{{ element.dob }}</span>
+                        </li>
+                        <li class="list-group-item">
+                            Nacionalidade:
+                            <span class="fw-bold">{{ element.nationality }}</span>
                         </li>
                     </ul>
                 </div>
@@ -61,7 +97,15 @@ export default {
         deleteRole: {
             type: Boolean,
             required: true
-        }
+        },
+        viewDriver: {
+            type: Boolean,
+            required: true
+        },
+        viewConstructor: {
+            type: Boolean,
+            required: true
+        }        
     },
     methods: {
         clickDeleteElement: async function (elementId) {

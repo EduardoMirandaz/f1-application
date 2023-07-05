@@ -66,7 +66,7 @@
                 <div class="row">
                     <div class="col-md-6" v-for="element in pagedElements" :key="element.id">
                         <CardView :element="element" :view-role="viewRole" :update-role="updateRole"
-                            :delete-role="deleteRole">
+                            :delete-role="deleteRole" :viewDriver="viewDriver" :viewConstructor="viewConstructor">
                         </CardView>
                     </div>
                 </div>
@@ -126,6 +126,14 @@ export default {
             type: String,
             required: true
         },
+        viewDriver: {
+            type: Boolean,
+            required: true
+        },
+        viewConstructor: {
+            type: Boolean,
+            required: true
+        }
     },
     data: function () {
         return {

@@ -9,7 +9,7 @@
             <button class="btn btn-lg px-5 btn btn-success" @click="showManagerMethodPiloto()">Gerenciar Pilotos</button>
         </div>
         <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements"
-            :responseDataPerson="person" :loading="loading" v-if="showManagerPiloto || showManagerEscuderia" :end-point="endPoint" :addDriver="showManagerPiloto" :addConstructor="showManagerEscuderia"/>
+            :responseDataPerson="person" :loading="loading" v-if="showManagerPiloto || showManagerEscuderia" :end-point="endPoint" :addDriver="showManagerPiloto" :addConstructor="showManagerEscuderia" :viewConstructor="showManagerEscuderia" :viewDriver="showManagerPiloto"/>
     </div>
 </template>
 
