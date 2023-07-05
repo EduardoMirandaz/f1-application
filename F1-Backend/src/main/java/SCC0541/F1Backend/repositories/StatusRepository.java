@@ -1,14 +1,13 @@
 package SCC0541.F1Backend.repositories;
 
 import SCC0541.F1Backend.database.SQLScripts;
-import SCC0541.F1Backend.dtos.QuantidadeStatusDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.QuantidadeStatusDTO;
 import SCC0541.F1Backend.models.StatusModel;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Query;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

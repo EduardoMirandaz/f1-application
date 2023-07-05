@@ -3,10 +3,7 @@ package SCC0541.F1Backend.models;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -14,6 +11,7 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity(name = "Geocities15k")
 public class GeoCitiesModel {
 
@@ -31,10 +29,10 @@ public class GeoCitiesModel {
     private String alternateNames;
 
     @Column(name = "Lat")
-    private Float lat;
+    private Double lat;
 
     @Column(name = "Long")
-    private Float lon;
+    private Double lon;
 
     @Column(name = "Featureclass")
     private String featureClass;

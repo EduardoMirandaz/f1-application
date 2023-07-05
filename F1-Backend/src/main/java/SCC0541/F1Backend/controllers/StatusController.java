@@ -1,6 +1,6 @@
 package SCC0541.F1Backend.controllers;
 
-import SCC0541.F1Backend.dtos.QuantidadeStatusDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.QuantidadeStatusDTO;
 import SCC0541.F1Backend.dtos.StatusDTO;
 import SCC0541.F1Backend.services.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package SCC0541.F1Backend.services;
 
-import SCC0541.F1Backend.dtos.QuantidadeStatusDTO;
+import SCC0541.F1Backend.dtos.RelatoriosDTOs.QuantidadeStatusDTO;
 import SCC0541.F1Backend.dtos.StatusDTO;
 import SCC0541.F1Backend.repositories.StatusRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
