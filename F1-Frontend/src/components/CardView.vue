@@ -39,8 +39,8 @@
   
 <script>
 import { ElementService } from '../services/ElementService.js'
-import ViewElement from '../views/ViewElement.vue'
-import EditElement from '../views/EditElement.vue'
+import ViewElement from './ViewElement.vue'
+import EditElement from './EditElement.vue'
 import ModalElement from '../components/ModalElement.vue'
 export default {
     name: 'CardView',
