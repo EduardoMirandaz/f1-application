@@ -8,7 +8,7 @@
                             <ModalElement btn-title=" Adicionar Elemento" :btn-opt="false" modal-title="Adicionar" :visible="false"
                                 variant="success" btn-class-external="btn btn-success btn-sm"
                                 btn-class-internal="fa fa-plus-circle" title="Adicionar">
-                                <AddElement :end-point="'123456'"/>
+                                <AddElement :end-point="endPoint" :addDriver="addDriver" :addConstructor="addConstructor"/>
                             </ModalElement>
                         </span>
                         <!-- <span class="btn">
@@ -114,10 +114,18 @@ export default {
             type: Boolean,
             required: true
         },
+        addDriver: {
+            type: Boolean,
+            required: true
+        },
+        addConstructor: {
+            type: Boolean,
+            required: true
+        },
         endPoint: {
             type: String,
             required: true
-        }
+        },
     },
     data: function () {
         return {

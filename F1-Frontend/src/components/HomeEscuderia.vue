@@ -22,7 +22,7 @@
         <div>
             <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
         </div>
-        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading" :end-point="endPoint"/>
+        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading" :end-point="endPoint" :addDriver="showManagerPiloto" :addConstructor="showManagerEscuderia"/>
     </div>
 </template>
 
