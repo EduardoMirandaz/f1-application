@@ -22,15 +22,17 @@
         <div>
             <router-link class="btn btn-lg px-5 btn btn-success" to="/dash">Exibir relatórios</router-link>
         </div>
-        <ElementManager :view-role="true" :update-role="true" :delete-role="true" />
+        <ElementManager :view-role="true" :update-role="true" :delete-role="true" :responseDataElements="elements" :responseDataPerson="person" :loading="loading"/>
     </div>
 </template>
 
 <script>
 import ElementManager from '@/components/ElementManager.vue';
+import { ElementService } from '../services/ElementService.js';
 
 export default {
     name: "HomeEscuderia",
+    components: { ElementManager },
     props: {
         name: {
             type: String,
@@ -53,7 +55,26 @@ export default {
             required: true
         },
     },
-    components: { ElementManager }
+    data: function () {
+        return {
+            loading: false,
+            elements: [],
+            person: {}
+        }
+    },
+    created: async function () {
+        try {
+            this.loading = true;
+            let response = await ElementService.getAllElements();
+            this.elements = response.data;
+            let nresponse = await ElementService.getPerson();
+            this.person = nresponse.data;
+            this.loading = false;
+        } catch (error) {
+            this.errorMessage = error;
+            this.loading = false;
+        }
+    }    
 }
 </script>
 
