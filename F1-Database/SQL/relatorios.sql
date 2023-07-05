@@ -1,14 +1,10 @@
 
 -- Relatorio 1
 SELECT STATUS.STATUS,
-       COUNT(*) AS QUANTIDADE_DE_RESULTADOS
+	COUNT(*) AS QUANTIDADE_DE_RESULTADOS
 FROM RESULTS
-         JOIN STATUS ON RESULTS.STATUSID = STATUS.STATUSID
-GROUP BY STATUS.STATUS
-ORDER BY  QUANTIDADE_DE_RESULTADOS DESC;
-
-
-SELECT * FROM airports a
+JOIN STATUS ON RESULTS.STATUSID = STATUS.STATUSID
+GROUP BY STATUS.STATUS;
 
 
 
@@ -48,8 +44,7 @@ ORDER BY
 
 
 -- Relatorio 3
-CREATE INDEX idx_results_position_constructor ON results (positionorder, constructorid);
-
+CREATE INDEX IF NOT EXISTS idx_results_position_constructor ON results (positionorder, constructorid);
 
 CREATE OR REPLACE FUNCTION get_driver_victories(constructor_id INT) RETURNS TABLE (
     nome_piloto TEXT,
@@ -76,8 +71,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
-SELECT * FROM get_driver_victories(27); -- substituir o valor passado na função pelo constructorid
+SELECT * FROM get_driver_victories(27); 
 
 
 -- Relatorio 4
@@ -104,7 +98,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_status_counts(25); -- substituir o valor passado na função pelo constructorid
+SELECT * FROM get_status_counts(25);
 
 
 -- Relatorio 5
@@ -142,7 +136,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT * FROM get_pilot_victories(102); -- substituir com o driverid
+SELECT * FROM get_pilot_victories(102);
 
 
 
@@ -171,4 +165,4 @@ BEGIN
 	END;
 	$$ LANGUAGE plpgsql;
 	
-	SELECT * FROM get_pilot_status_counts(102); -- substituir com o driverid
+	SELECT * FROM get_pilot_status_counts(102);
