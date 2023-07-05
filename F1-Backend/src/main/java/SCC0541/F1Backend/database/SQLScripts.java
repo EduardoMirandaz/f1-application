@@ -60,21 +60,22 @@ public class SQLScripts {
                 airports.name AS aeroporto,
                 airports.city AS cidade_aeroporto,
                 earth_distance(
-                        ll_to_earth(:latitude, :longitude),
-                        ll_to_earth(airports.latdeg, airports.longdeg)
+                        ll_to_earth(airports.latdeg, airports.longdeg),
+                        ll_to_earth(:latitude, :longitude)
                     ) / 1000 AS distancia_em_km,
                 airports.type AS tipo_aeroporto
             FROM
                 geocities15k
-                    JOIN
-                airports ON geocities15k.name = airports.city
-            WHERE
-                    geocities15k.country = 'BR'
-              AND airports.type IN ('medium_airport', 'large_airport')
-              AND earth_distance(
+                    RIGHT JOIN
+                airports ON earth_distance(
                           ll_to_earth(:latitude, :longitude),
                           ll_to_earth(airports.latdeg, airports.longdeg)
                       ) <= 100000 -- limite de distância = 100000 metros (100km)
+            WHERE
+                    airports.isocountry = 'BR'
+                    AND airports.type IN ('medium_airport', 'large_airport')
+                    AND geocities15k.lat = :latitude
+                    AND geocities15k.long = :longitude
             ORDER BY
                 distancia_em_km;
             """;
