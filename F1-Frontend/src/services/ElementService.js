@@ -47,7 +47,7 @@ export class ElementService {
     }
 
     static getRelatorio1(token){
-        let dataURL = `${this.oficialBackendURL}/status/`;
+        let dataURL = `${this.oficialBackendURL}/status/relatorio/quantidade-por-resultado`;
         let bearerToken = "Bearer" + token
          return axios.get(dataURL, 
             {
