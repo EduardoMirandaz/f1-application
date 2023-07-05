@@ -2,13 +2,13 @@
     <div class="dashboard">
         <h2 class="homeAdminGerenciarLabel ajusteMargin">Selecione o relatório</h2>
         <div class="gridHome">
-            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio1()">Exibir seus resultados das corridas </button>
-            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio2()">Exibir sua quantidade de resultados por status</button>
+            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio1()" :class="{ 'selecionado': relatorio1}">Exibir seus resultados das corridas </button>
+            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio2()" :class="{ 'selecionado': relatorio2}">Exibir sua quantidade de resultados por status</button>
         </div>
         <div class="relatorio" v-if="relatorio1">
             <h3 class="relatorio1Desc">Esse relatório tem o objetivo de consultar a quantidade de vitórias obtidas, apresentando o ano e a corrida onde cada vitlória foi alcançada.</h3>
             <div class="ordenadores">
-                <h4>Ordenar por: </h4>
+                <h4>Agrupar por: </h4>
                 <div class="ordenador" @click="mudarOrdenador(0)" :class="{ 'selecionado': selecionado == 0}">
                     <h4>Visão Geral</h4>
                 </div>
@@ -22,7 +22,7 @@
             <div v-if="selecionado == 0" class="vitoriaList">
                 <h3 class="subtitulo">Total de vitórias: <span class="label"> {{ resultadoPiloto.geral.length }}</span></h3>
                 <div v-for="resultado in resultadoPiloto.geral" :key="resultado.nomeCorrida" class="vitoriaGeral">
-                    <h4 class="vitoria"><span class="label">Ano: </span> {{ resultado.ano }} <span class="label">Corrida: </span>vitoriaGeral{{ resultado.nomeCorrida }}</h4  >
+                    <h4 class="vitoria"><span class="label">Ano: </span> {{ resultado.ano }} <span class="label">Corrida: </span>{{ resultado.nomeCorrida }}</h4  >
                 </div>
             </div>
             <div v-if="selecionado == 1" class="vitoriasPorCorrida">
@@ -268,8 +268,8 @@
         align-items: center;
         margin-bottom: 10px;
         border-radius: 10px;
-        border: 5px solid #198754;
-        padding: 5px;
+        box-shadow: inset 0 0 0 5px #198754;
+        padding: 10px;
         cursor: pointer;
 
     }
@@ -278,6 +278,8 @@
         background-color: #198754;
         color: #FFF;
         transition: 0.2s;
+        box-shadow: inset 0 0 0 5px #157347; 
+
     }
     /* Estilos para a lista de status */
     .vitoriaList {

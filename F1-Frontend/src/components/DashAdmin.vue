@@ -2,8 +2,8 @@
     <div class="dashboard">
         <h2 class="homeAdminGerenciarLabel ajusteMargin">Selecione o relatório</h2>
         <div class="gridHome">
-            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio1()">Exibir quantidade de resultados por status</button>
-            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio2()">Aeroportos próximos no território brasileiro</button>
+            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio1()" :class="{ 'selecionado': relatorio1}">Exibir quantidade de resultados por status</button>
+            <button class="btn btn-lg px-5 btn btn-success" @click="mudarParaORelatorio2()" :class="{ 'selecionado': relatorio2}">Aeroportos próximos no território brasileiro</button>
         </div>
         <div class="relatorio" v-if="relatorio1">
             <h3 class="relatorio1Desc">Esse relatório indica a quantidade de resultados por cada status, apresentando o
@@ -86,7 +86,6 @@ nome do status e sua contagem.</h3>
             mudarParaORelatorio1(){
                 this.relatorio1 = true
                 this.relatorio2 = false
-                this.selecionado = 1
                 this.cidades = []
                 this.statusList = [
                     { "status": "Finished", "quantity": 7123 },
@@ -143,13 +142,13 @@ nome do status e sua contagem.</h3>
                     { "status": "+10 Laps", "quantity": 32 },
                     { "status": "Alternator", "quantity": 31 }
                 ]
+                this.mudarOrdenador(1)
             },
             mudarParaORelatorio2(){
                 this.relatorio1 = false
                 this.relatorio2 = true
                 this.cidades = []
                 this.statusList = []
-                this.selecionado = 3
             },
             mudarOrdenador(number){
                 this.selecionado = number
@@ -307,6 +306,7 @@ nome do status e sua contagem.</h3>
                         ]
                     }, 
                 ]
+                this.mudarOrdenador(3)
             },
             handleKeyPress(event) {
                 if (event.key === 'Enter') {
@@ -382,8 +382,8 @@ nome do status e sua contagem.</h3>
         align-items: center;
         margin-bottom: 10px;
         border-radius: 10px;
-        border: 5px solid #198754;
-        padding: 5px;
+        box-shadow: inset 0 0 0 5px #198754;
+        padding: 10px;
         cursor: pointer;
 
     }
@@ -392,6 +392,8 @@ nome do status e sua contagem.</h3>
         background-color: #198754;
         color: #FFF;
         transition: 0.2s;
+        box-shadow: inset 0 0 0 5px #157347; 
+
     }
     .statusList {
         display: flex;
