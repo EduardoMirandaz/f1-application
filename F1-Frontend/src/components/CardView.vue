@@ -1,5 +1,5 @@
 <template>
-    <div class="container-card card my-2 list-group-item-success shadow-lg">
+    <div class="card-view container-card card my-2 list-group-item-success shadow-lg ">
         <div class="card-body">
             <div class="row align-items-center">
                 <div class="col-sm-4">

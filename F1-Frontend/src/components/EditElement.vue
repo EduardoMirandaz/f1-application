@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="edit-element">
         <div class="container mt-3">
             <div class="row">
                 <div class="col">

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="element-manager">
         <NavBar :titulo="person.name" :tipo="person.type" isHomePage />
 
         <div class="container mt-3">
