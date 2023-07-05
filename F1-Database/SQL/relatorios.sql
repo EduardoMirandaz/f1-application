@@ -84,3 +84,29 @@ SELECT * FROM get_pilot_victories(102); -- substituir com o driverid
 
 
 
+
+-- Relatório 6
+
+CREATE OR REPLACE FUNCTION get_pilot_status_counts(pilot_id INT) RETURNS TABLE (
+    status_name TEXT,
+    count BIGINT -- Change the return type to BIGINT
+) AS $$
+BEGIN
+    RETURN QUERY
+    SELECT
+        status.status AS status_name,
+        COUNT(*) AS count
+    FROM
+        results
+    JOIN
+        status ON results.statusid = status.statusid
+    WHERE
+        results.driverid = pilot_id
+    GROUP BY
+        status.status;
+
+    RETURN;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT * FROM get_pilot_status_counts(102); -- substituir com o driverid
