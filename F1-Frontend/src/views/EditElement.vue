@@ -1,11 +1,13 @@
 <template>
     <div class="edit-element">
-        <div class="container mt-3 text-center">
+        <div class="container mt-3">
             <div class="row">
                 <div class="col">
-                    <p class="h3 text-success fw-bold">Editar</p>
+                    <p class="h3 text-success fw-bold">Edit Element</p>
                     <p class="fst-italic">
-                        Atualize seus elementos de base de dados com precisão e facilidade usando o modal de edição.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto sit amet laborum expedita libero sunt
+                        aspernatur animi eveniet! Nesciunt expedita eius consectetur inventore facilis pariatur consequuntur
+                        doloribus odit illo dolorem!
                     </p>
                 </div>
             </div>
@@ -50,9 +52,6 @@
                             <div class="mb-2">
                                 <input v-model="element.groupId" type="text" class="form-control" placeholder="GroupId">
                             </div>
-                            <div class="mb-2">
-                                <input type="submit" class="btn btn-success" value="Atualizar">
-                            </div>
                         </form>
                     </div>
                 </div>
@@ -62,20 +61,22 @@
                     </div>
                 </div>
             </div>
-
+            <div class="mb-2">
+                <input type="submit" class="btn btn-success" value="Update">
+            </div>
         </div>
     </div>
 </template>
 
 <script>
 import { ElementService } from '../services/ElementService.js'
-import SpinnerLoader from './SpinnerLoader.vue'
+import SpinnerLoader from '../components/SpinnerLoader.vue'
 export default {
     name: 'EditElement',
     components: { SpinnerLoader },
     props: {
         elementId: {
-            type: Number,
+            type: Object,
             required: true
         }
     },
